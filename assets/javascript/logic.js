@@ -1,7 +1,15 @@
 $("#submit-home").click(function () {
 	$(".subcontainer").remove();
-	console.log('hello')
+  console.log('hello')
+  
+
+  var quizDiv = $("<div>");
+
 })
+
+var quiz = [
+  
+]
 
 
   // Initialize Firebase
