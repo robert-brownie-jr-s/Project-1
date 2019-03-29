@@ -1,0 +1,18 @@
+body {
+	margin: 0;
+	background-color: ;
+}
+nav {
+	width:100%;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#title-head {
+	color: white;
+	
+}
+
+.jumbotron {
+	margin-left: 15%;
+}
