@@ -2,7 +2,10 @@ $(document).ready(function(){
 
 
 
-function quizQuestions () {
+	$("#submit-home").click(function () {
+		$(".subcontainer").remove();
+		console.log('hello')
+
 var quizItems = [{
   question: "How far are you willing to travel?",
   options: ["5 miles", "10 miles","25 miles"],
@@ -21,26 +24,25 @@ var quizItems = [{
   options: ["1", "2" , "3 or more"],
 }] //end of quiz items 
 
+for (i = 0; i < quizItems.length; i++) {
 
- function quizPage() {
-	var quizDiv = $("<div>");
-	quizItems.attr('class', 'quiz-items');
-	quizDiv.append(quizItems.question);
-	quizDiv.append(quizItems.options);
-
+	var questionDiv = $("<div class='form-check-input row questions' type='radio'>")
+	var questions = '<h2> ' + quizItems[i].question + '?' + '</h2>';
 	
+	questionDiv.append(questions);
+	$("#questions-here").append(questionDiv);
 
- } //end of quizPage function
- quizPage();
- $("#submit-home").trigger('click');
-} //end of questions function
+} //end of i for loop
 
-$("#submit-home").click(function () {
-  $(".subcontainer").remove();
-  console.log('hello')
+for (j = 0; j < quizItems.length; j++) {
 
- 
-quizPage();
+	var optionDiv = $("<div class='form-check-input row options' type='radio'>");
+	var options =  '<p>' +	quizItems[j].options + '</p>';
+	optionDiv.append(options);
+
+	$("#options-here").append(optionDiv);
+	} //end of j for loop
+
 }) //end of submit function
 
 /*
