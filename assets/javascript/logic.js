@@ -30,7 +30,8 @@ for (i = 0; i < quizItems.length; i++) {
   
 //created options for each question
   for (j = 0; j < quizItems[i].options.length; j++) {
-    $('#questions-here').append("<input type='radio' name='question-" + i + "' value= " + quizItems[i].options[j] + "' >" + quizItems[i].options[j]);
+    $('#questions-here').append("<input type='radio' class='option-here' name='question-" + i + "' value= " + quizItems[i].options[j] + "' >" + quizItems[i].options[j]);
+  
 
   } //end of j for loop
 
