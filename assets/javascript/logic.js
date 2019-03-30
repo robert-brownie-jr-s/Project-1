@@ -7,7 +7,7 @@ $("#submit-home").click(function () {
 
 })
 
-var quiz = [
+var quizItems = [
   
 ]
 
