@@ -24,24 +24,18 @@ var quizItems = [{
   options: ["1", "2" , "3 or more"],
 }] //end of quiz items 
 
+//created questions on page
 for (i = 0; i < quizItems.length; i++) {
+  $("#questions-here").append("<h3 id='question-text'>" + quizItems[i].question + "</h3>");
+  
+//created options for each question
+  for (j = 0; j < quizItems[i].options.length; j++) {
+    $('#questions-here').append("<input type='radio' name='question-" + i + "' value= " + quizItems[i].options[j] + "' >" + quizItems[i].options[j]);
 
-	var questionDiv = $("<div class='form-check-input row questions' type='radio'>")
-	var questions = '<h2> ' + quizItems[i].question + '?' + '</h2>';
-	
-	questionDiv.append(questions);
-	$("#questions-here").append(questionDiv);
+  } //end of j for loop
 
 } //end of i for loop
 
-for (j = 0; j < quizItems.length; j++) {
-
-	var optionDiv = $("<div class='form-check-input row options' type='radio'>");
-	var options =  '<p>' +	quizItems[j].options + '</p>';
-	optionDiv.append(options);
-
-	$("#options-here").append(optionDiv);
-	} //end of j for loop
 
 }) //end of submit function
 
