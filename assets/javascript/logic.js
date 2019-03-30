@@ -37,6 +37,16 @@ for (i = 0; i < quizItems.length; i++) {
 
 } //end of i for loop
 
+var cityCard = $(' <div class="card text-white bg-success mb-3" style="max-width: 18rem;">' + 
+'<div class="card-header">City/Zip</div>' +
+'<div class="card-body">' +
+ '<h5 class="card-title">What City/Zip Code are you planning to be in (Must be in Orange County)</h5>' + 
+  '<input id="user-input">' + 
+'</div>')
+
+$(".zip-code").append(cityCard);
+
+
 
 }) //end of submit function
 
