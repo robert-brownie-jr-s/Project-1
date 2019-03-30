@@ -1,28 +1,28 @@
 $(document).ready(function(){
 
-
+  var quizItems = [{
+    question: "How far are you willing to travel?",
+    options: ["5 miles", "10 miles","25 miles"],
+  },
+  {
+    question: "Do you want to be active?",
+    options: ["yes", "no"],
+  
+  },
+  {
+    question: "Do you want to spend money?",
+    options: ["yes", "no"],
+  },
+  {
+    question: "How big is you group?",
+    options: ["1", "2" , "3 or more"],
+  }] //end of quiz items 
+  
 
 	$("#submit-home").click(function () {
 		$(".subcontainer").remove();
 		console.log('hello')
 
-var quizItems = [{
-  question: "How far are you willing to travel?",
-  options: ["5 miles", "10 miles","25 miles"],
-},
-{
-  question: "Do you want to be active?",
-  options: ["yes", "no"],
-
-},
-{
-  question: "Do you want to spend money?",
-  options: ["yes", "no"],
-},
-{
-  question: "How big is you group?",
-  options: ["1", "2" , "3 or more"],
-}] //end of quiz items 
 
 //created questions on page
 for (i = 0; i < quizItems.length; i++) {
@@ -37,6 +37,10 @@ for (i = 0; i < quizItems.length; i++) {
 
 } //end of i for loop
 
+//start of new jumbotron
+
+
+
 var cityCard = $(' <div class="card text-white bg-success mb-3" style="max-width: 18rem;">' + 
 '<div class="card-header">City/Zip</div>' +
 '<div class="card-body">' +
@@ -50,18 +54,18 @@ $(".zip-code").append(cityCard);
 
 }) //end of submit function
 
-/*
+
 // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyA0VKHpsqWkKic4BZ4Sc8ArYp7WdLvQ-Vc",
-  authDomain: "project1-c10f1.firebaseapp.com",
-  databaseURL: "https://project1-c10f1.firebaseio.com/",
-  projectId: "project1-c10f1",
-  storageBucket: "project1-c10f1.appspot.com",
-  messagingSenderId: "696380136176"
-};
-firebase.initializeApp(config);
-*/
+  var config = {
+    apiKey: "AIzaSyA0VKHpsqWkKic4BZ4Sc8ArYp7WdLvQ-Vc",
+    authDomain: "project1-c10f1.firebaseapp.com",
+    databaseURL: "https://project1-c10f1.firebaseio.com",
+    projectId: "project1-c10f1",
+    storageBucket: "project1-c10f1.appspot.com",
+    messagingSenderId: "696380136176"
+  };
+  firebase.initializeApp(config);;
+
 
 
 }) //end of document ready function

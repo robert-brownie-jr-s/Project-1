@@ -14,14 +14,16 @@ nav {
 }
 
 .jumbotron {
-	margin-left: 25%;
+	margin-left: 27%;
 }
 .quiz-items {
 	display: block;
-	
 }
 
 .option-here {
 	margin: 7px;
 }
 
+.card{
+	float: right; 
+}
