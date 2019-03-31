@@ -42,9 +42,9 @@ var city = $('<div class="row-fluid city">' +
   '<input id="user-input">' + 
 '</div>')
 
-$("#questions-here").append(city);
+var qButton = $('<div class="row-fluid q-button"><button type="button" class="btn btn-info">Submit</button></div>');
 
-
+$("#questions-here").append(city, qButton);
 
 }) //end of submit function
 

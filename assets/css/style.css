@@ -46,3 +46,7 @@ nav {
 .option-div {
 	display: inline;
 }
+.q-button {
+text-align: center;
+margin-top: 20px;
+}
