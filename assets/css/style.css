@@ -18,12 +18,31 @@ nav {
 }
 .quiz-items {
 	display: block;
+	background-color:#ddd;
+	margin-left: 29%;
+	width: 40%;
+	position: absolute;
+    top: 200px;
+	margin-bottom: 10px;
+}
+#question-text {
+	/* margin:inherit ; */
+	text-align: center; 
+	
+}
+.option-div {
+	/* margin: inherit; */
+	text-align: center; 
 }
 
 .option-here {
 	margin: 7px;
+	
 }
 
-.card{
-	float: right; 
+.city {
+	text-align: center; 
+}
+.option-div {
+	display: inline;
 }
