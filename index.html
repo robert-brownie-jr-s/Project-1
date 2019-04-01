@@ -2,18 +2,32 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- bootstrap css link -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- css link -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Dirty Mike and the Boys</title>
+	<meta charset="UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- bootstrap css link -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- css link -->
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<title>Dirty Mike and the Boys</title>
 </head>
 
 <body>
+		
+<!-- google maps -->
+		
+		<script>
+				var map;
+				function initMap() {
+					map = new google.maps.Map(document.getElementById('map'), {
+						center: {lat: -34.397, lng: 150.644},
+						zoom: 8
+					});
+				}
+			</script>
+
 
   <div class="container-fluid">
 
@@ -68,6 +82,8 @@
       </div>
     </div>
 
+		<div id="map"></div>
+		
   </div> <!-- end of container -->
 
 
@@ -90,7 +106,11 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
   <!-- js link -->
-  <script src="./assets/javascript/logic.js"></script>
+	<script src="./assets/javascript/logic.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"
+		async defer></script>
+		
+
 </body>
 
 </html>
