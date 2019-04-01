@@ -1,7 +1,8 @@
 body {
 	margin: 0;
-	background-color: lightseagreen;
-	
+	background-image: url(../images/Orange-County.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 
@@ -30,16 +31,22 @@ nav {
 }
 
 .jumbotron {
-	margin-left: 20%;
+	margin-left: 27%;
+	background: none;
+	color: white;
+	position: relative;
+	top: 30%;
 }
+
 .quiz-items {
 	display: block;
-	background-color:#ddd;
-	margin-left: 29%;
-	width: 40%;
+	background-color: #ddd;
+	color: black;
+	margin-left: 80%;
+	width: 50%;
 	position: absolute;
     top: 200px;
-	margin-bottom: 10px;
+	margin-bottom: 5;
 }
 #question-text {
 	/* margin:inherit ; */
@@ -53,8 +60,6 @@ nav {
 
 .option-here {
 	margin: 7px;
-
-	
 }
 
 .city {
@@ -66,9 +71,5 @@ nav {
 .submit-div {
 text-align: center;
 margin-top: 20px;
-}
-.quiz-container {
-	border-top: 0px;
-	border-bottom: 0px;
 }
 

@@ -46,7 +46,7 @@ $(document).ready(function () {
 		} //end of i for loop
 
 		var city = $('<div class="row-fluid city">' +
-			'<h5 class="card-title">What City/Zip Code are you planning to be in (Must be in Orange County)</h5>' +
+			'<h3 class="card-title"> Zip Code(Must be in Orange County)</h3>' +
 			'<input id="user-input">' +
 			'</div>')
 
