@@ -53,24 +53,22 @@ $(document).ready(function () {
 
 		$("#questions-here").append(city, qButton);
 
-		console.log(quizItems.question[i])
 
 		// event.stopPropagation();
-
-		//start of submit button function
-		$(document).on('click', submitBtn, function () {
-
+		qButton.on('click', function () {
+			alert("1")
 			// $(".quiz-container").remove();
-
+	
 			var radioValue;
 			//queston-1
-			$("input[type='button']").click(function () {
-				 radioValue = $("input[name='question-1']:checked").val();
+			$("input[type='radio']").click(function () {
+				 radioValue = $("input[name='question-0	']:checked").val();
+				 console.log(radioValue)
 				 if(radioValue){
 					alert("Your are a - " + radioValue);
 				}
 			});
-
+	
 			//queston-2
 			$("input[type='button']").click(function () {
 				 radioValue = $("input[name='question-2']:checked").val();
@@ -78,7 +76,7 @@ $(document).ready(function () {
 					console.log(radioValue)
 				}
 			});
-
+	
 			//queston-3
 			$("input[type='button']").click(function () {
 				 radioValue = $("input[name='question-3']:checked").val();
@@ -86,7 +84,7 @@ $(document).ready(function () {
 					console.log(radioValue)
 				}
 			});
-
+	
 			//queston-4
 			$("input[type='button']").click(function () {
 				 radioValue = $("input[name='question-4']:checked").val();
@@ -94,14 +92,15 @@ $(document).ready(function () {
 					console.log(radioValue)
 				}
 			});
-
-
+	
+	
 		}) //end of submit function
+	
 
 	}) //end of start function
 
-
-
+	//start of submit button function
+	
 
 
 	// Initialize Firebase
