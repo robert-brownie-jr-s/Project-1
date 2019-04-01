@@ -19,13 +19,53 @@
 <!-- google maps -->
 		
 		<script>
-				var map;
-				function initMap() {
-					map = new google.maps.Map(document.getElementById('map'), {
-						center: {lat: -34.397, lng: 150.644},
-						zoom: 8
-					});
-				}
+				// google maps
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat: -34.397, lng: 150.644},
+			  zoom: 8
+			});
+		  }
+
+		console.log('button working')
+		
+		// google maps
+		
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat: -34.397, lng: 150.644},
+			  zoom: 6
+			});
+			infoWindow = new google.maps.InfoWindow;
+	
+			// Try HTML5 geolocation.
+			if (navigator.geolocation) {
+			  navigator.geolocation.getCurrentPosition(function(position) {
+				var pos = {
+				  lat: position.coords.latitude,
+				  lng: position.coords.longitude
+				};
+	
+				infoWindow.setPosition(pos);
+				infoWindow.setContent('Location found.');
+				infoWindow.open(map);
+				map.setCenter(pos);
+			  }, function() {
+				handleLocationError(true, infoWindow, map.getCenter());
+			  });
+			} else {
+			  // Browser doesn't support Geolocation
+			  handleLocationError(false, infoWindow, map.getCenter());
+			}
+		  }
+	
+		  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+			infoWindow.setPosition(pos);
+			infoWindow.setContent(browserHasGeolocation ?
+								  'Error: The Geolocation service failed.' :
+								  'Error: Your browser doesn\'t support geolocation.');
+			infoWindow.open(map);
+		  }
 			</script>
 
 
@@ -53,9 +93,9 @@
       <br>
 
       <!-- start of jumbotron -->
-      <div class="row" id="text">
+      <div class="row">
         <div class="col-md-10">
-         <div class="jumbotron jumbotron-fluid"> 
+        <div class="jumbotron jumbotron-fluid">
           <div class="container jumbo text-center">
             <h1 class="display-4">Come Make Your Day Special</h1>
             <p class="lead text-center">Here at Instant Plan we allow you the ability to make the most of you day without
@@ -63,7 +103,7 @@
             <p class="text-center">Start your Adventure by clicking the button below!</p>
             <div class="text-center">
               <!-- submit button -->
-              <button type="button" class="btn btn-secondary" id="start">Click Me!</button>
+              <button type="button" class="btn btn-primary" id="start">Click Me!</button>
             </div>
           </div>
         </div>
@@ -72,9 +112,9 @@
       </div><!-- end of jumbotron row -->
     </div><!-- end ofsubcontainer -->
     <div class="row">
-      <div class="col-8">
+      <div class="col-12">
 
-        <div class="quiz-container" id="container">
+        <div class="quiz-container">
       
             <div class="row quiz-items text-center"><form id="questions-here"></form></div>
     
@@ -107,8 +147,8 @@
     </script>
   <!-- js link -->
 	<script src="./assets/javascript/logic.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"
-		async defer></script>
+	<!-- Google Maps api -->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"></script>
 		
 
 </body>
