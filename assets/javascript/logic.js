@@ -52,7 +52,8 @@ $(document).ready(function () {
 
 //start of submit button function
 $(document).on('click', '.submit ', function(){
-	event.preventDefault();
+  event.preventDefault();
+  $(".quiz-container").remove();
 	//calling the start function
 	$('#start').trigger();
 
@@ -67,7 +68,6 @@ console.log(zipVal)
 
 console.log('button working')
 
-$(".quiz-container").remove();
 }) //end of submit function
 	
 
