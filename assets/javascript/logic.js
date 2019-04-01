@@ -57,22 +57,21 @@ $(document).ready(function () {
 
 		//start of submit button function
 		$(document).on('click', submitBtn, function () {
-			console.log('button working')
-			event.preventDefault();
+
 			// $(".quiz-container").remove();
 
 			var radioValue;
 			//queston-1
 			$("input[type='button']").click(function () {
 				 radioValue = $("input[name='question-1']:checked").val();
-				if (radioValue) {
-					console.log(radioValue)
+				 if(radioValue){
+					alert("Your are a - " + radioValue);
 				}
 			});
 
 			//queston-2
 			$("input[type='button']").click(function () {
-				 radioValue = $("input[name='question-1']:checked").val();
+				 radioValue = $("input[name='question-2']:checked").val();
 				if (radioValue) {
 					console.log(radioValue)
 				}
@@ -80,7 +79,7 @@ $(document).ready(function () {
 
 			//queston-3
 			$("input[type='button']").click(function () {
-				 radioValue = $("input[name='question-1']:checked").val();
+				 radioValue = $("input[name='question-3']:checked").val();
 				if (radioValue) {
 					console.log(radioValue)
 				}
@@ -88,7 +87,7 @@ $(document).ready(function () {
 
 			//queston-4
 			$("input[type='button']").click(function () {
-				 radioValue = $("input[name='question-1']:checked").val();
+				 radioValue = $("input[name='question-4']:checked").val();
 				if (radioValue) {
 					console.log(radioValue)
 				}
