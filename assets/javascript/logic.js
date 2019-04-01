@@ -2,8 +2,10 @@ $(document).ready(function () {
 
 	var submitBtn = $(".submit");
 	var startBtn = $("#start");
-	$("#map").remove();
-
+	var map, infoWindow;
+	
+	$("#map").hide();
+		
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
