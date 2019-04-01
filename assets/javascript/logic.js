@@ -3,8 +3,7 @@ $(document).ready(function () {
 
 	var submitBtn = $(".submit");
 	var startBtn = $("#start");
-	var map;
-	$("#map").hide();
+	
 		
 
 	var quizItems = [{
@@ -78,21 +77,7 @@ $(document).ready(function () {
 
 		console.log('button working')
 		// google maps
-		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat: -34.397, lng: 150.644},
-			  zoom: 8
-			});
-		  }
-
-		console.log('button working')
-		// google maps
-		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat: -34.397, lng: 150.644},
-			  zoom: 8
-			});
-		  }
+		
 
 	}) //end of submit function
 
