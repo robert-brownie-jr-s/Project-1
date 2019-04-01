@@ -18,8 +18,8 @@ $(document).ready(function () {
 		options: ["1", "2", "3 or more"],
 	}] //end of quiz items 
 
-
-	$("#start").click(function () {
+var startBtn = $("#start");
+	startBtn.click(function () {
 		event.preventDefault();
 		$(".subcontainer").remove();
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + quizItems[i].question  + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
 
 
 			} //end of j for loop
@@ -47,36 +47,33 @@ $(document).ready(function () {
 
 		$("#questions-here").append(city, qButton);
 
-	}) //end of start function
+		console.log(quizItems[i].question)
 
-
-	//start of submit button function
-	$(document).on('click', '.submit ', function () {
+		var submitBtn = $(".submit");
+			//start of submit button function
+	$(document).on('click', submitBtn, function () {
 		event.preventDefault();
-		$(".quiz-container").remove();
+		// $(".quiz-container").remove();
 		//calling the start function
 		$('#start').trigger();
 
 		$("input[type='button']").click(function () {
-			var radioValue = $("input[name='question- " + i + " ']:checked").val();
+			
+			var radioValue = $("input[name='question- " + quizItems[i].question + " ']:checked").val();
 			console.log(radioValue)
 			if (radioValue) {
 				console.log(radioValue)
 			}
 		});
 		console.log('button working')
-
-
-		/*
-		//returning number of inputs checked rather than what the inputs are
-		var optionVal = $(quizItems.question[i]).val();
-		console.log(optionVal);
-		
-		//not defined error
-		var zipVal = city.val().trim();
-		console.log(zipVal)
-		*/
 	}) //end of submit function
+
+
+
+
+	}) //end of start function
+
+
 
 
 	// Initialize Firebase
