@@ -63,23 +63,31 @@ function initMap() {
 	//start of submit button function
 	$(document).on('click', '.submit ', function () {
 		event.preventDefault();
+		$(".quiz-container").remove();
 		//calling the start function
 		$('#start').trigger();
 
-		//returning number of inputs checked rather than what the inputs are
-		var optionVal = $(quizItems.question[i]).val();
-		console.log(optionVal);
-
-		//not defined error
-		var zipVal = city.val().trim();
-		console.log(zipVal)
-
-
+		$("input[type='button']").click(function () {
+			var radioValue = $("input[name='question- " + i + " ']:checked").val();
+			console.log(radioValue)
+			if (radioValue) {
+				console.log(radioValue)
+			}
+		});
 		console.log('button working')
 
 
+		/*
+		//returning number of inputs checked rather than what the inputs are
+		var optionVal = $(quizItems.question[i]).val();
+		console.log(optionVal);
+		
+		//not defined error
+		var zipVal = city.val().trim();
+		console.log(zipVal)
+		*/
 	}) //end of submit function
-	
+
 
 	// Initialize Firebase
 	var config = {
