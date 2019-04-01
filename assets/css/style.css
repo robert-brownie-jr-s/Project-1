@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+	background-color: lightseagreen;
 	
 }
 nav {
@@ -37,6 +38,7 @@ nav {
 
 .option-here {
 	margin: 7px;
+
 	
 }
 
@@ -50,3 +52,8 @@ nav {
 text-align: center;
 margin-top: 20px;
 }
+.quiz-container {
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
