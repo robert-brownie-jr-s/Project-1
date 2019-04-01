@@ -4,6 +4,7 @@ $(document).ready(function () {
 	var submitBtn = $(".submit");
 	var startBtn = $("#start");
 	var map;
+	$("#map").hide();
 		
 
 	var quizItems = [{
@@ -75,6 +76,14 @@ $(document).ready(function () {
 		$('input[name=question-3]:checked').val();
 		$('input[name=question-4]:checked').val();
 
+		console.log('button working')
+		// google maps
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat: -34.397, lng: 150.644},
+			  zoom: 8
+			});
+		  }
 
 		console.log('button working')
 		// google maps
@@ -86,10 +95,6 @@ $(document).ready(function () {
 		  }
 
 	}) //end of submit function
-
-
-
-
 
 	// Initialize Firebase
 	var config = {
