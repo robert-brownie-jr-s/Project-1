@@ -1,25 +1,26 @@
 $(document).ready(function () {
+	var submitBtn = $(".submit");
+	var startBtn = $("#start");
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
 		options: ["5 miles", "10 miles", "25 miles"],
 	},
 	{
-		question: "Do you want to be active?",
-		options: ["yes", "no"],
+		question: "Activity Level",
+		options: ["active", "not active "],
 
 	},
 	{
-		question: "Do you want to spend money?",
-		options: ["yes", "no"],
+		question: "Budget?",
+		options: ["expensive", "cheap"],
 	},
 	{
 		question: "How big is your group?",
-		options: ["1", "2", "3 or more"],
+		options: ["1", "2", "3+"],
 	}] //end of quiz items 
 
-var startBtn = $("#start");
-	startBtn.click(function () {
+	startBtn.click(function (event) {
 		event.preventDefault();
 		$(".subcontainer").remove();
 
@@ -31,7 +32,7 @@ var startBtn = $("#start");
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + quizItems[i].question  + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
 
 
 			} //end of j for loop
@@ -47,32 +48,30 @@ var startBtn = $("#start");
 
 		$("#questions-here").append(city, qButton);
 
-		console.log(quizItems[i].question)
+		// console.log(quizItems[i].question)
 
-		var submitBtn = $(".submit");
-			//start of submit button function
-	$(document).on('click', submitBtn, function () {
-		event.preventDefault();
-		// $(".quiz-container").remove();
-		//calling the start function
-		$('#start').trigger();
-
-		$("input[type='button']").click(function () {
-			
-			var radioValue = $("input[name='question- " + quizItems[i].question + " ']:checked").val();
-			console.log(radioValue)
-			if (radioValue) {
-				console.log(radioValue)
-			}
-		});
-		console.log('button working')
-	}) //end of submit function
+		event.stopPropagation();
+		
 
 
 
 
 	}) //end of start function
 
+	//start of submit button function
+	$(document).on('click', submitBtn, function () {
+		console.log('button working')
+		event.preventDefault();
+		// $(".quiz-container").remove();
+		//calling the start function
+
+		$('input[name=question-1]:checked').val();
+		$('input[name=question-2]:checked').val();
+		$('input[name=question-3]:checked').val();
+		$('input[name=question-4]:checked').val();
+
+
+	}) //end of submit function
 
 
 
