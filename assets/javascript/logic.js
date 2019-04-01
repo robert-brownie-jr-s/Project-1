@@ -3,7 +3,8 @@ $(document).ready(function () {
 
 	var submitBtn = $(".submit");
 	var startBtn = $("#start");
-	var map;
+	var map, infoWindow;
+	
 	$("#map").hide();
 		
 
@@ -77,22 +78,7 @@ $(document).ready(function () {
 		$('input[name=question-4]:checked').val();
 
 		console.log('button working')
-		// google maps
-		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat: -34.397, lng: 150.644},
-			  zoom: 8
-			});
-		  }
-
-		console.log('button working')
-		// google maps
-		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat: -34.397, lng: 150.644},
-			  zoom: 8
-			});
-		  }
+		
 
 	}) //end of submit function
 
