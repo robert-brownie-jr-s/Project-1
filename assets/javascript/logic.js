@@ -1,12 +1,9 @@
+
 $(document).ready(function () {
-// Google maps
-var map;
-function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: { lat: -34.397, lng: 150.644 },
-		zoom: 8
-	});
-}
+	var map;
+		
+
+
 
 
 
@@ -74,7 +71,11 @@ function initMap() {
 				console.log(radioValue)
 			}
 		});
+
 		console.log('button working')
+
+
+
 
 
 		/*
@@ -88,7 +89,7 @@ function initMap() {
 		*/
 	}) //end of submit function
 
-
+	
 	// Initialize Firebase
 	var config = {
 		apiKey: "AIzaSyA0VKHpsqWkKic4BZ4Sc8ArYp7WdLvQ-Vc",
