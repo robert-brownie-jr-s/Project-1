@@ -2,95 +2,96 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- bootstrap css link -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- css link -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Dirty Mike and the Boys</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- bootstrap css link -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- css link -->
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<title>Dirty Mike and the Boys</title>
 </head>
 
 <body>
 
-  <div class="container-fluid">
+	<div class="container-fluid">
 
-    <div class="subcontainer">
-      <div class="row">
+		<div class="subcontainer">
+			<div class="row">
 
-        <nav class="navbar navbar-dark bg-dark">
-          <h1 class="nav-header text-center" id="title-head">Instant Plan</h1>
+				<nav class="navbar navbar-dark bg-dark">
+					<h1 class="nav-header text-center" id="title-head">Instant Plan</h1>
 
-          <div class="header-list">
-            <ul class="nav justify-content-center">
-              <a class="nav-link active" href="#">AYAYA</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">can change whenever</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">aya</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#">AYA</a>
-              </li>
-            </ul>
+					<div class="header-list">
+						<ul class="nav justify-content-center">
+							<a class="nav-link active" href="#">AYAYA</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">can change whenever</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">aya</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " href="#">AYA</a>
+							</li>
+						</ul>
 
-        </nav> <!-- end of navbar  -->
+				</nav> <!-- end of navbar  -->
 
-      </div> <!-- end of nav row -->
+			</div> <!-- end of nav row -->
 
-      <br>
+			<br>
 
-      <!-- start of jumbotron -->
-      <div class="row">
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container jumbo text-center">
-            <h1 class="display-4">Come Make Your Day Special</h1>
-            <p class="lead text-center">Here at Instant Plan we allow you the ability to mke the most of you day without
-              all the hastle of planning </p>
-            <p class="text-center">Start your Advneture by clicking the button below!</p>
-            <div class="text-center">
-              <!-- submit button -->
-              <button type="button" class="btn btn-primary" id="start">Click Me!</button>
-            </div>
-          </div>
-        </div> <!-- end of jumbotron -->
+			<!-- start of jumbotron -->
+			<div class="row">
+				<div class="jumbotron jumbotron-fluid">
+					<div class="container jumbo text-center">
+						<h1 class="display-4">Come Make Your Day Special</h1>
+						<p class="lead text-center">Here at Instant Plan we allow you the ability to mke the most of you
+							day without
+							all the hastle of planning </p>
+						<p class="text-center">Start your Advneture by clicking the button below!</p>
+						<div class="text-center">
+							<!-- submit button -->
+							<button type="button" class="btn btn-primary" id="start">Click Me!</button>
+						</div>
+					</div>
+				</div> <!-- end of jumbotron -->
 
-      </div><!-- end of jumbotron row -->
-    </div><!-- end ofsubcontainer -->
-    <div class="quiz-container text-center">
-      <div class="row quiz-items">
-        <form id="questions-here"></form>
-      </div>
+			</div><!-- end of jumbotron row -->
+		</div><!-- end ofsubcontainer -->
+		<div class="quiz-container text-center">
+			<div class="row quiz-items">
+				<form id="questions-here"></form>
+			</div>
 
-    </div> <!-- end of quiz container -->
+		</div> <!-- end of quiz container -->
 
-  </div> <!-- end of container -->
-
-
-
+	</div> <!-- end of container -->
 
 
 
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~LINKS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <!-- firebase link -->
-  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-  <!-- jQuery link -->
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
-    </script>
-  <!-- bootstrap js link -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-  <!-- js link -->
-  <script src="./assets/javascript/logic.js"></script>
+
+
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~LINKS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- firebase link -->
+	<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+	<!-- jQuery link -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+		</script>
+	<!-- bootstrap js link -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+		</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+		</script>
+	<!-- js link -->
+	<script src="./assets/javascript/logic.js"></script>
 </body>
 
 </html>
