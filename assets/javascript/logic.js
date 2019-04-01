@@ -67,7 +67,7 @@ console.log(zipVal)
 
 console.log('button working')
 
-
+$(".quiz-container").remove();
 }) //end of submit function
 	
 
