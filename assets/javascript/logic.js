@@ -14,7 +14,7 @@ $(document).ready(function () {
 		options: ["yes", "no"],
 	},
 	{
-		question: "How big is you group?",
+		question: "How big is your group?",
 		options: ["1", "2", "3 or more"],
 	}] //end of quiz items 
 
