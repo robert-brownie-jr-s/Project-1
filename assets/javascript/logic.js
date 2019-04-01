@@ -1,4 +1,14 @@
 $(document).ready(function () {
+// Google maps
+var map;
+function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: { lat: -34.397, lng: 150.644 },
+		zoom: 8
+	});
+}
+
+
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -22,7 +32,7 @@ $(document).ready(function () {
 	$("#start").click(function () {
 		event.preventDefault();
 		$(".subcontainer").remove();
-	
+
 
 
 		//created questions on page
@@ -50,25 +60,25 @@ $(document).ready(function () {
 	}) //end of start function
 
 
-//start of submit button function
-$(document).on('click', '.submit ', function(){
-	event.preventDefault();
-	//calling the start function
-	$('#start').trigger();
+	//start of submit button function
+	$(document).on('click', '.submit ', function () {
+		event.preventDefault();
+		//calling the start function
+		$('#start').trigger();
 
-//returning number of inputs checked rather than what the inputs are
-var optionVal = $(quizItems.question[i]).val();
-console.log(optionVal);
+		//returning number of inputs checked rather than what the inputs are
+		var optionVal = $(quizItems.question[i]).val();
+		console.log(optionVal);
 
-//not defined error
-var zipVal = city.val().trim();
-console.log(zipVal)
-
-
-console.log('button working')
+		//not defined error
+		var zipVal = city.val().trim();
+		console.log(zipVal)
 
 
-}) //end of submit function
+		console.log('button working')
+
+
+	}) //end of submit function
 	
 
 	// Initialize Firebase
