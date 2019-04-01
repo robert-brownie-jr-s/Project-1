@@ -1,11 +1,9 @@
-
 $(document).ready(function () {
 
 	var submitBtn = $(".submit");
 	var startBtn = $("#start");
-	var map;
-	$("#map").hide();
-		
+	$("#map").remove();
+
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -53,48 +51,57 @@ $(document).ready(function () {
 
 		$("#questions-here").append(city, qButton);
 
-		// console.log(quizItems[i].question)
+		console.log(quizItems.question[i])
 
-		event.stopPropagation();
-		
+		// event.stopPropagation();
+
+		//start of submit button function
+		$(document).on('click', submitBtn, function () {
+			console.log('button working')
+			event.preventDefault();
+			// $(".quiz-container").remove();
+
+			var radioValue;
+			//queston-1
+			$("input[type='button']").click(function () {
+				 radioValue = $("input[name='question-1']:checked").val();
+				if (radioValue) {
+					console.log(radioValue)
+				}
+			});
+
+			//queston-2
+			$("input[type='button']").click(function () {
+				 radioValue = $("input[name='question-1']:checked").val();
+				if (radioValue) {
+					console.log(radioValue)
+				}
+			});
+
+			//queston-3
+			$("input[type='button']").click(function () {
+				 radioValue = $("input[name='question-1']:checked").val();
+				if (radioValue) {
+					console.log(radioValue)
+				}
+			});
+
+			//queston-4
+			$("input[type='button']").click(function () {
+				 radioValue = $("input[name='question-1']:checked").val();
+				if (radioValue) {
+					console.log(radioValue)
+				}
+			});
 
 
-
+		}) //end of submit function
 
 	}) //end of start function
 
-	//start of submit button function
-	$(document).on('click', submitBtn, function () {
-		console.log('button working')
-		event.preventDefault();
-		// $(".quiz-container").remove();
-		//calling the start function
 
 
-		$('input[name=question-1]:checked').val();
-		$('input[name=question-2]:checked').val();
-		$('input[name=question-3]:checked').val();
-		$('input[name=question-4]:checked').val();
 
-		console.log('button working')
-		// google maps
-		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat: -34.397, lng: 150.644},
-			  zoom: 8
-			});
-		  }
-
-		console.log('button working')
-		// google maps
-		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat: -34.397, lng: 150.644},
-			  zoom: 8
-			});
-		  }
-
-	}) //end of submit function
 
 	// Initialize Firebase
 	var config = {
