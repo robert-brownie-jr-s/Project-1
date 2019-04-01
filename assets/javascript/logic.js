@@ -1,32 +1,30 @@
 
 $(document).ready(function () {
+
+	var submitBtn = $(".submit");
+	var startBtn = $("#start");
 	var map;
 		
-
-
-
-
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
 		options: ["5 miles", "10 miles", "25 miles"],
 	},
 	{
-		question: "Do you want to be active?",
-		options: ["yes", "no"],
+		question: "Activity Level",
+		options: ["active", "not active "],
 
 	},
 	{
-		question: "Do you want to spend money?",
-		options: ["yes", "no"],
+		question: "Budget?",
+		options: ["expensive", "cheap"],
 	},
 	{
 		question: "How big is your group?",
-		options: ["1", "2", "3 or more"],
+		options: ["1", "2", "3+"],
 	}] //end of quiz items 
 
-
-	$("#start").click(function () {
+	startBtn.click(function (event) {
 		event.preventDefault();
 		$(".subcontainer").remove();
 
@@ -54,23 +52,29 @@ $(document).ready(function () {
 
 		$("#questions-here").append(city, qButton);
 
+		// console.log(quizItems[i].question)
+
+		event.stopPropagation();
+		
+
+
+
+
 	}) //end of start function
 
-
 	//start of submit button function
-	$(document).on('click', '.submit ', function () {
+	$(document).on('click', submitBtn, function () {
+		console.log('button working')
 		event.preventDefault();
-		$(".quiz-container").remove();
+		// $(".quiz-container").remove();
 		//calling the start function
-		$('#start').trigger();
 
-		$("input[type='button']").click(function () {
-			var radioValue = $("input[name='question- " + i + " ']:checked").val();
-			console.log(radioValue)
-			if (radioValue) {
-				console.log(radioValue)
-			}
-		});
+
+		$('input[name=question-1]:checked').val();
+		$('input[name=question-2]:checked').val();
+		$('input[name=question-3]:checked').val();
+		$('input[name=question-4]:checked').val();
+
 
 		console.log('button working')
 		// google maps
@@ -80,23 +84,13 @@ $(document).ready(function () {
 			  zoom: 8
 			});
 		  }
-		
 
-
-
-
-		/*
-		//returning number of inputs checked rather than what the inputs are
-		var optionVal = $(quizItems.question[i]).val();
-		console.log(optionVal);
-		
-		//not defined error
-		var zipVal = city.val().trim();
-		console.log(zipVal)
-		*/
 	}) //end of submit function
 
-	
+
+
+
+
 	// Initialize Firebase
 	var config = {
 		apiKey: "AIzaSyA0VKHpsqWkKic4BZ4Sc8ArYp7WdLvQ-Vc",
