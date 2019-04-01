@@ -4,6 +4,7 @@ $(document).ready(function () {
 	var submitBtn = $(".submit");
 	var startBtn = $("#start");
 	var map;
+	$("#map").hide();
 		
 
 	var quizItems = [{
