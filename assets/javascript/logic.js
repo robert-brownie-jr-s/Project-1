@@ -21,7 +21,7 @@ $(document).ready(function () {
 		options: ["yes", "no"],
 	},
 	{
-		question: "How big is you group?",
+		question: "How big is your group?",
 		options: ["1", "2", "3 or more"],
 	}] //end of quiz items 
 
@@ -73,7 +73,14 @@ $(document).ready(function () {
 		});
 
 		console.log('button working')
-
+		// google maps
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat: -34.397, lng: 150.644},
+			  zoom: 8
+			});
+		  }
+		
 
 
 
