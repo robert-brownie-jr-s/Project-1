@@ -1,0 +1,52 @@
+body {
+	margin: 0;
+	
+}
+nav {
+	width:100%;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#title-head {
+	color: white;
+	
+}
+
+.jumbotron {
+	margin-left: 27%;
+}
+.quiz-items {
+	display: block;
+	background-color:#ddd;
+	margin-left: 29%;
+	width: 40%;
+	position: absolute;
+    top: 200px;
+	margin-bottom: 10px;
+}
+#question-text {
+	/* margin:inherit ; */
+	text-align: center; 
+	
+}
+.option-div {
+	/* margin: inherit; */
+	text-align: center; 
+}
+
+.option-here {
+	margin: 7px;
+	
+}
+
+.city {
+	text-align: center; 
+}
+.option-div {
+	display: inline;
+}
+.submit-div {
+text-align: center;
+margin-top: 20px;
+}
