@@ -20,6 +20,7 @@ $(document).ready(function () {
 
 
 	$("#start").click(function () {
+		event.preventDefault();
 		$(".subcontainer").remove();
 	
 
@@ -30,7 +31,7 @@ $(document).ready(function () {
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline row-fluid'> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j] + "'> </div>" + quizItems[i].options[j]);
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
 
 
 			} //end of j for loop
@@ -51,15 +52,19 @@ $(document).ready(function () {
 
 //start of submit button function
 $(document).on('click', '.submit ', function(){
+	event.preventDefault();
 	//calling the start function
 	$('#start').trigger();
 
-
-var optionVal = quizItems.options.val();
-var zipVal = city.val().trim();
-
+//returning number of inputs checked rather than what the inputs are
+var optionVal = $(quizItems.question[i]).val();
 console.log(optionVal);
+
+//not defined error
+var zipVal = city.val().trim();
 console.log(zipVal)
+
+
 console.log('button working')
 
 
@@ -76,6 +81,9 @@ console.log('button working')
 		messagingSenderId: "696380136176"
 	};
 	firebase.initializeApp(config);;
+
+
+
 
 
 
