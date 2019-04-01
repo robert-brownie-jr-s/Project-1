@@ -1,4 +1,11 @@
+
 $(document).ready(function () {
+	var map;
+		
+
+
+
+
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -64,7 +71,18 @@ $(document).ready(function () {
 				console.log(radioValue)
 			}
 		});
+
 		console.log('button working')
+		// google maps
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat: -34.397, lng: 150.644},
+			  zoom: 8
+			});
+		  }
+		
+
+
 
 
 		/*
@@ -78,7 +96,7 @@ $(document).ready(function () {
 		*/
 	}) //end of submit function
 
-
+	
 	// Initialize Firebase
 	var config = {
 		apiKey: "AIzaSyA0VKHpsqWkKic4BZ4Sc8ArYp7WdLvQ-Vc",
