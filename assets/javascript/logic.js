@@ -1,6 +1,10 @@
+
 $(document).ready(function () {
+
 	var submitBtn = $(".submit");
 	var startBtn = $("#start");
+	var map;
+		
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -40,7 +44,7 @@ $(document).ready(function () {
 		} //end of i for loop
 
 		var city = $('<div class="row-fluid city">' +
-			'<h5 class="card-title">What City/Zip Code are you planning to be in (Must be in Orange County)</h5>' +
+			'<h3 class="card-title"> Zip Code(Must be in Orange County)</h3>' +
 			'<input id="user-input">' +
 			'</div>')
 
@@ -65,13 +69,25 @@ $(document).ready(function () {
 		// $(".quiz-container").remove();
 		//calling the start function
 
+
 		$('input[name=question-1]:checked').val();
 		$('input[name=question-2]:checked').val();
 		$('input[name=question-3]:checked').val();
 		$('input[name=question-4]:checked').val();
 
 
+		console.log('button working')
+		// google maps
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat: -34.397, lng: 150.644},
+			  zoom: 8
+			});
+		  }
+
 	}) //end of submit function
+
+
 
 
 
