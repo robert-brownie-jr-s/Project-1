@@ -48,6 +48,8 @@ nav {
 	position: absolute;
     top: 200px;
 	margin-bottom: 5;
+	margin-left: 78%;
+	right: 50%;
 }
 #question-text {
 	/* margin:inherit ; */
