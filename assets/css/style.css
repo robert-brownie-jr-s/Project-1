@@ -41,11 +41,12 @@ nav {
 
 .quiz-items {
 	display: block;
-	background-color: #ddd;
-	color: black;
+	background-color: lightskyblue;
 	margin-left: 30%;
-	width: 40%;
+	width: 50%;
 	margin-top: 10%;
+	border-radius: 25%;
+	padding: 40px;
 }
 #question-text {
 	/* margin:inherit ; */
@@ -71,6 +72,9 @@ nav {
 text-align: center;
 margin-top: 10px;
 padding-bottom: 5px;
+}
+.btn-submit {
+	background-color: darkorange;
 }
 .nav-link {
 	color:white;
