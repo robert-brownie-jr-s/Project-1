@@ -3,6 +3,9 @@ $(document).ready(function () {
 
 	var submitBtn = $(".submit");
 	var startBtn = $("#start");
+	var map, infoWindow;
+
+	$('#map').hide();
 	
 		
 
