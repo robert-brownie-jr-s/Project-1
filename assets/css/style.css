@@ -45,11 +45,7 @@ nav {
 	color: black;
 	margin-left: 30%;
 	width: 40%;
-	position: absolute;
-    top: 200px;
-	margin-bottom: 5;
-	margin-left: 78%;
-	right: 50%;
+	margin-top: 10%;
 }
 #question-text {
 	/* margin:inherit ; */
