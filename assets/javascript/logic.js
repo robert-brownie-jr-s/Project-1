@@ -68,6 +68,28 @@ $(document).ready(function () {
 
 		});
 
+		$("input[name='question-2'").click(function () {
+			var radioValue = $("input[type='radio']:checked").val();
+		   if (radioValue) {
+			   console.log("radio click: " + radioValue);
+			   searchArr.push($("input[type='radio']:checked").val())
+			   console.log(searchArr)
+
+		   }
+
+	   });
+
+	   $("input[name='question-3'").click(function () {
+		var radioValue = $("input[type='radio']:checked").val();
+	   if (radioValue) {
+		   console.log("radio click: " + radioValue);
+		   searchArr.push($("input[type='radio']:checked").val())
+		   console.log(searchArr)
+
+	   }
+
+   });
+
 
 		var city = $('<div class="row-fluid city">' +
 			'<h3 class="card-title"> Zip Code(Must be in Orange County)</h3>' +
@@ -82,9 +104,9 @@ $(document).ready(function () {
 		//submit function
 		submitBtn.on('click', function () {
 			var zip = $("#user-input").val();
-			console.log(zip)
-
+			searchArr.push(zip)
 			console.log("you clicked submit")
+			console.log(searchArr)
 
 			// $(".quiz-container").remove();
 
