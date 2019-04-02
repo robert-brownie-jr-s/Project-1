@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
-		options: ["5 miles", "10 miles", "25 miles"],
+		options: ["5_miles", "10_miles", "25 miles"],
 	},
 	{
 		question: "Activity Level",
@@ -36,60 +36,12 @@ $(document).ready(function () {
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j]+ "'>" + quizItems[i].options[j]) + "</div>";
 
 
 			} //end of j (opiton) for loop
 
 		} //end of i (question) for loop
-
-
-		var searchArr = [];
-		//queston-1
-		$("input[name='question-0'").click(function () {
-			var radioValue = $("input[type='radio']:checked").val();
-			if (radioValue) {
-				console.log("radio click: " + radioValue);
-				searchArr.push(radioValue)
-				console.log(searchArr)
-
-			}
-
-		}); //end of radion value function
-		
-		$("input[name='question-1'").click(function () {
-			 var radioValue = $("input[type='radio']:checked").val();
-			if (radioValue) {
-				console.log("radio click: " + radioValue);
-				searchArr.push($("input[type='radio']:checked").val())
-				console.log(searchArr)
-
-			}
-
-		});
-
-		$("input[name='question-2'").click(function () {
-			var radioValue = $("input[type='radio']:checked").val();
-		   if (radioValue) {
-			   console.log("radio click: " + radioValue);
-			   searchArr.push($("input[type='radio']:checked").val())
-			   console.log(searchArr)
-
-		   }
-
-	   });
-
-	   $("input[name='question-3'").click(function () {
-		var radioValue = $("input[type='radio']:checked").val();
-	   if (radioValue) {
-		   console.log("radio click: " + radioValue);
-		   searchArr.push($("input[type='radio']:checked").val())
-		   console.log(searchArr)
-
-	   }
-
-   });
-
 
 		var city = $('<div class="row-fluid city">' +
 			'<h3 class="card-title"> Zip Code(Must be in Orange County)</h3>' +
@@ -103,12 +55,39 @@ $(document).ready(function () {
 
 		//submit function
 		submitBtn.on('click', function () {
-			var zip = $("#user-input").val();
-			searchArr.push(zip)
-			console.log("you clicked submit")
-			console.log(searchArr)
 
+			//obtain value of radio buttons
+			var searchArr = [];
+			var firstValue = $('input:radio[name=question-0]:checked').val();
+			var secondValue = $('input:radio[name=question-1]:checked').val();
+			var thirdValue = $('input:radio[name=question-2]:checked').val();
+			var fourthValue = $('input:radio[name=question-3]:checked').val();
+	
+
+			// var checked_site_radio = $('input:radio[name=user_site]:checked').val();
+			if(firstValue) {
+					searchArr.push("Distance: " + firstValue)
+				}
+				if(secondValue) {
+					searchArr.push("Activity: " + secondValue)
+				}
+				if(thirdValue) {
+					searchArr.push("Budget: " + thirdValue)
+				}
+				if(fourthValue) {
+					searchArr.push("Group Size: " + fourthValue)
+				}
+			
+
+			//set of the results page
 			// $(".quiz-container").remove();
+
+			var zip = $("#user-input").val();
+			searchArr.push("Zip Code: " + zip)
+
+			//checking to see if submitBtn is working
+			console.log("you clicked submit")
+			console.log(searchArr)			
 
 		}) //end of submit function
 
