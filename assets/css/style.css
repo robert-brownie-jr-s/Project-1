@@ -43,12 +43,9 @@ nav {
 	display: block;
 	background-color: #ddd;
 	color: black;
-	width: 50%;
-	position: relative;	
-    top: 200px;
-	margin-bottom: 5;
-	margin-left: 78%;
-	right: 50%;
+	margin-left: 30%;
+	width: 40%;
+	margin-top: 10%;
 }
 #question-text {
 	/* margin:inherit ; */
