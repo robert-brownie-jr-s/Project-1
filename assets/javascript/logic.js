@@ -1,10 +1,9 @@
 $(document).ready(function () {
 
-	var submitBtn = $(".submit");
 	var startBtn = $("#start");
 	var map, infoWindow;
 	
-	$("#map").hide();
+	$("#map").remove();
 		
 
 	var quizItems = [{
@@ -44,55 +43,37 @@ $(document).ready(function () {
 
 		} //end of i for loop
 
+		var radioValue;
+		var searchArr = [];
+			//queston-1
+			$("input[type='radio']").click(function () {
+				 var radioValue = $("input[name='question-0']:checked").val();
+				 console.log(radioValue)
+				 if(radioValue){
+					console.log("radio click: " + radioValue);
+					searchArr.push(radioValue)
+					console.log(searchArr)
+
+				}
+			});
+
+			
+
 		var city = $('<div class="row-fluid city">' +
 			'<h3 class="card-title"> Zip Code(Must be in Orange County)</h3>' +
 			'<input id="user-input">' +
 			'</div>')
 
-		var qButton = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-info submit">Submit</button></div>');
+		var submitBtn = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-info submit">Submit</button></div>');
 
-		$("#questions-here").append(city, qButton);
+		$("#questions-here").append(city, submitBtn);
 
 
-		// event.stopPropagation();
-		qButton.on('click', function () {
-			alert("1")
+		//submit function
+		submitBtn.on('click', function () {
+			console.log("you clicked submit")
+			console.log(radioValue)
 			// $(".quiz-container").remove();
-	
-			var radioValue;
-			//queston-1
-			$("input[type='radio']").click(function () {
-				 radioValue = $("input[name='question-0	']:checked").val();
-				 console.log(radioValue)
-				 if(radioValue){
-					alert("Your are a - " + radioValue);
-				}
-			});
-	
-			//queston-2
-			$("input[type='button']").click(function () {
-				 radioValue = $("input[name='question-2']:checked").val();
-				if (radioValue) {
-					console.log(radioValue)
-				}
-			});
-	
-			//queston-3
-			$("input[type='button']").click(function () {
-				 radioValue = $("input[name='question-3']:checked").val();
-				if (radioValue) {
-					console.log(radioValue)
-				}
-			});
-	
-			//queston-4
-			$("input[type='button']").click(function () {
-				 radioValue = $("input[name='question-4']:checked").val();
-				if (radioValue) {
-					console.log(radioValue)
-				}
-			});
-	
 	
 		}) //end of submit function
 	
