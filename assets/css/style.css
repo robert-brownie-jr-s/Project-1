@@ -69,8 +69,12 @@ nav {
 }
 .submit-div {
 text-align: center;
-margin-top: 20px;
+margin-top: 10px;
+padding-bottom: 5px;
 }
 .nav-link {
 	color:white;
+}
+.instruction-list {
+border-bottom: solid black;
 }
