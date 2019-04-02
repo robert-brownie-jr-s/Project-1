@@ -77,17 +77,18 @@ $(document).ready(function () {
 				if(fourthValue) {
 					searchArr.push("Group Size: " + fourthValue)
 				}
-			
-
-			//set of the results page
-			$(".quiz-container").remove();
-			$("#map").show();
+		
 			var zip = $("#user-input").val();
 			searchArr.push("Zip Code: " + zip)
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
 			console.log(searchArr)			
+
+
+			//set of the results page
+			$(".quiz-container").remove();
+			$("#map").show();
 
 		}) //end of submit function
 
