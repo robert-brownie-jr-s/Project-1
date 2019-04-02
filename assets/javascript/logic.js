@@ -79,7 +79,7 @@ $(document).ready(function () {
 
 		console.log('button working')
 		
-
+		$("#map").show();
 	}) //end of submit function
 
 	// Initialize Firebase
