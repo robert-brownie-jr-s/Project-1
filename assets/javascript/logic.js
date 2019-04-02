@@ -3,7 +3,7 @@ $(document).ready(function () {
 	var startBtn = $("#start");
 	var map, infoWindow;
 
-	$("#map").remove();
+	$("#map").hide();
 
 
 	var quizItems = [{
@@ -80,8 +80,8 @@ $(document).ready(function () {
 			
 
 			//set of the results page
-			// $(".quiz-container").remove();
-
+			$(".quiz-container").remove();
+			$("#map").show();
 			var zip = $("#user-input").val();
 			searchArr.push("Zip Code: " + zip)
 
