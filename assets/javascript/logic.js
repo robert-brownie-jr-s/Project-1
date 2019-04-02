@@ -1,16 +1,14 @@
-
 $(document).ready(function () {
 
-	var submitBtn = $(".submit");
 	var startBtn = $("#start");
 	var map, infoWindow;
-	
-	$("#map").hide();
-		
+
+	$("#map").remove();
+
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
-		options: ["5 miles", "10 miles", "25 miles"],
+		options: ["5_miles", "10_miles", "25 miles"],
 	},
 	{
 		question: "Activity Level",
@@ -38,49 +36,67 @@ $(document).ready(function () {
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j]+ "'>" + quizItems[i].options[j]) + "</div>";
 
 
-			} //end of j for loop
+			} //end of j (opiton) for loop
 
-		} //end of i for loop
+		} //end of i (question) for loop
 
 		var city = $('<div class="row-fluid city">' +
 			'<h3 class="card-title"> Zip Code(Must be in Orange County)</h3>' +
 			'<input id="user-input">' +
 			'</div>')
 
-		var qButton = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-info submit">Submit</button></div>');
+		var submitBtn = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-info submit">Submit</button></div>');
 
-		$("#questions-here").append(city, qButton);
-
-		// console.log(quizItems[i].question)
-
-		event.stopPropagation();
-		
+		$("#questions-here").append(city, submitBtn);
 
 
+		//submit function
+		submitBtn.on('click', function () {
+
+			//obtain value of radio buttons
+			var searchArr = [];
+			var firstValue = $('input:radio[name=question-0]:checked').val();
+			var secondValue = $('input:radio[name=question-1]:checked').val();
+			var thirdValue = $('input:radio[name=question-2]:checked').val();
+			var fourthValue = $('input:radio[name=question-3]:checked').val();
+	
+
+			// var checked_site_radio = $('input:radio[name=user_site]:checked').val();
+			if(firstValue) {
+					searchArr.push("Distance: " + firstValue)
+				}
+				if(secondValue) {
+					searchArr.push("Activity: " + secondValue)
+				}
+				if(thirdValue) {
+					searchArr.push("Budget: " + thirdValue)
+				}
+				if(fourthValue) {
+					searchArr.push("Group Size: " + fourthValue)
+				}
+			
+
+			//set of the results page
+			// $(".quiz-container").remove();
+
+			var zip = $("#user-input").val();
+			searchArr.push("Zip Code: " + zip)
+
+			//checking to see if submitBtn is working
+			console.log("you clicked submit")
+			console.log(searchArr)			
+
+		}) //end of submit function
 
 
 	}) //end of start function
 
 	//start of submit button function
-	$(document).on('click', submitBtn, function () {
-		console.log('button working')
-		event.preventDefault();
-		// $(".quiz-container").remove();
-		//calling the start function
 
 
-		$('input[name=question-1]:checked').val();
-		$('input[name=question-2]:checked').val();
-		$('input[name=question-3]:checked').val();
-		$('input[name=question-4]:checked').val();
-
-		console.log('button working')
-		
-
-	}) //end of submit function
 
 	// Initialize Firebase
 	var config = {
