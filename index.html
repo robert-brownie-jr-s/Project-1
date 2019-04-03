@@ -49,15 +49,16 @@
       }
     }
 
-    /*
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-       infoWindow.setPosition(pos);
-       infoWindow.setContent(browserHasGeolocation ?
-         'Error: The Geolocation service failed.' :
-         'Error: Your browser doesn\'t support geolocation.');
-       infoWindow.open(map);
-     }
-     */
+   
+   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+
+    
   </script>
 
 
@@ -112,11 +113,9 @@
       <div class="col-12">
 
         <div class="quiz-container">
-
-          <div class="quiz-items text-center">
-            <form id="questions-here"></form>
-          </div>
-
+      
+             <div class="quiz-items text-center"><form id="questions-here"></form></div> 
+    
         </div>
       </div>
     </div>
@@ -145,8 +144,6 @@
     </script>
   <!-- js link -->
   <script src="./assets/javascript/logic.js"></script>
-
-
 
 </body>
 

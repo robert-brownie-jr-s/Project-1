@@ -78,6 +78,7 @@ $(document).ready(function () {
 			$(".quiz-container").remove();
 			$("#map").show();
 
+<<<<<<< HEAD
 
 			// START OF API //
 			var queryURL = "https:maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0"
@@ -88,6 +89,26 @@ $(document).ready(function () {
 				.then(function (response) {
 					console.log(response)
 				})
+=======
+			// START OF API //
+			function start() {
+				// 2. Initialize the JavaScript client library.
+				gapi.client.init({
+					'apiKey': 'AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0',
+				}).then(function () {
+					// 3. Initialize and make the API request.
+					return gapi.client.request({
+						'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
+					})
+				}).then(function (response) {
+					console.log(response.result);
+				}, function (reason) {
+					console.log('Error: ' + reason.result.error.message);
+				});
+			};
+			// 1. Load the JavaScript client library.
+			gapi.load('client', start);
+>>>>>>> f768182b0b08e7d19c12082a79a37e0096a17567
 
 		}) //end of submit function
 
