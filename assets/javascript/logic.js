@@ -3,7 +3,7 @@ $(document).ready(function () {
 	var startBtn = $("#start");
 	var map, infoWindow, service;
 
-	$("#map").hide();
+	// $("#map").hide();
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -74,7 +74,16 @@ $(document).ready(function () {
 
 			//set of the results page
 			$(".quiz-container").remove();
-			$("#map").show();
+			// $("#map").show();
+			
+				  //this is the map
+				  function initMap() {
+					map = new google.maps.Map(document.getElementById("map"), {
+					  center: {lat: -34.397, lng: 150.644},
+					  zoom: 8
+					});
+				  }
+				  initMap();
 
 			// START OF API //
 			function start() {
@@ -94,6 +103,12 @@ $(document).ready(function () {
 			};
 			// 1. Load the JavaScript client library.
 			gapi.load('client', start);
+			
+			window.onLoadCallback = function(){
+				gapi.auth2.init({
+					client_id: 'filler_text_for_client_id.apps.googleusercontent.com'
+				  });
+			  }
 
 
 		}) //end of submit function

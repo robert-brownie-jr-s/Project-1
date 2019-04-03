@@ -13,59 +13,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>Dirty Mike and the Boys</title>
 </head>
-
 <body>
-
-   <!-- Google Maps api -->
-   <script async defer
-   src="https://maps.googleapis.com/maps/api/js?libraries=places&region=JP&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"></script>
-   
-  
-  <!-- google maps -->
-  <script>
-
-    // google maps
-
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 33.717, lng: -117.49 },
-        zoom: 6
-      });
-      infoWindow = new google.maps.InfoWindow;
-
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-          infoWindow.setPosition(pos);
-          infoWindow.setContent('Location found.');
-          infoWindow.open(map);
-          map.setCenter(pos);
-        }, function () {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-      }
-    }
-
-   
-   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    }
-
-    
-  </script>
-
-
 
   <div class="container-fluid">
 
@@ -146,6 +94,9 @@
     </script>
   <!-- js link -->
   <script src="./assets/javascript/logic.js"></script>
+  <script async defer
+ src="https://maps.googleapis.com/maps/api/js?libraries=places&region=JP&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"></script>
+ <script src="https://apis.google.com/js/client.js"></script>
 
 </body>
 
