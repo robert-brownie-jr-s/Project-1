@@ -55,7 +55,7 @@ nav {
 		100%{color:teal}
 }
 /* start of marquee */
-<style>
+
 .example1 {
  height: 50px;	
  overflow: hidden;
@@ -100,20 +100,21 @@ nav {
  transform: translateX(-100%); 
  }
 }
-</style>
+
 
 
 
 .quiz-items {
 	display: block;
-	background-color: #ddd;
-	color: black;
+	background-color: lightblue;
 	margin-left: 30%;
 	width: 40%;
-	margin-bottom: 20%
+	border-radius: 20%;
+	padding-left: 50px;
+	padding-right: 50px;
 	/* position: absolute; */
 
-
+}
 #question-text {
 	/* margin:inherit ; */
 	text-align: center; 
