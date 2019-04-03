@@ -52,7 +52,7 @@ $(document).ready(function () {
 			'<input id="user-input">' +
 			'</div>')
 
-		var submitBtn = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-info submit">Submit</button></div>');
+		var submitBtn = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-submit">Submit</button></div>');
 
 		$("#questions-here").append(city, submitBtn);
 
