@@ -12,35 +12,46 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- css link -->
   <link rel="stylesheet" href="./assets/css/style.css">
-	<title>Dirty Mike and the Boys</title>
-	
-	
-	
 
-	
+
+  <title>Instant Plan</title>
+
 </head>
 
 <body>
+
+		
+		<script>
+				var map;
+				function initMap() {
+					map = new google.maps.Map(document.getElementById('map'), {
+						center: {lat: -34.397, lng: 150.644},
+						zoom: 8
+					});
+				}
+			</script>
 
   <div class="container-fluid">
     <div class="row">
 
       <nav class="navbar navbar-dark bg-dark">
-        <h1 class="nav-header text-center" id="title-head">Instant Plan</h1>
+        <h1 class="nav-header text-center" id="title-head">Instant-Plan</h1>
 
         <div class="header-list">
           <ul class="nav justify-content-center">
-            <a class="nav-link active" id="contact" href="#">Contact</a>
+            <a class="nav-link blinking" id="contact" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="about" href="#">About</a>
+              <a class="nav-link blinking" href="#">About</a>
             </li>
           </ul>
 
       </nav> <!-- end of navbar  -->
 
     </div> <!-- end of nav row -->
-
+    <div class="example1">
+      <h3>Proudly helping 9.19 Billion people!</h3>
+      </div>
     <br>
     <div class="subcontainer">
       <!-- start of jumbotron -->
@@ -48,11 +59,9 @@
         <div class="col-md-10">
           <div class="jumbotron jumbotron-fluid">
             <div class="container jumbo text-center">
-              <h1 class="display-4">Come Make Your Day Special</h1>
-              <p class="lead text-center">Here at Instant Plan we allow you the ability to make the most of you day
-                without
-                all the hastle of planning </p>
-              <p class="text-center">Start your Adventure by clicking the button below!</p>
+			<h1	<span class="blinking">Come Make Your Day Special!</span> </h1>
+              <h3 class="text-center">Here at Instant-Plan we give you the ability to efficiently plan your day, hassle free! </h3>
+              <h2 class="text-center">Find your Adventure by clicking the button below!</h2>
               <div class="text-center">
                 <!-- submit button -->
                 <button type="button" class="btn btn-primary" id="start">Click Me!</button>
@@ -70,6 +79,10 @@
       <div class="col-12">
 
         <div class="quiz-container">
+
+            <div class="row quiz-items text-center"><form id="questions-here"></form></div>
+    <!-- this is a test? -->
+
 
           <div class="quiz-items text-center">
             <form id="questions-here"></form>

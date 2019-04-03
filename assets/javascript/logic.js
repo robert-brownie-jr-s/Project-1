@@ -195,7 +195,7 @@ $(document).ready(function () {
 		$('.container-fluid').append(contact);
 
 
-	})
+	});
 
 
 }) //end of document ready function
