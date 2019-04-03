@@ -15,8 +15,8 @@ $(document).ready(function () {
 
 	},
 	{
-		question: "Budget?",
-		options: ["expensive", "cheap"],
+		question: "On a scale from 0 (cheapest) to 4 (most expensive) what is you budget? ",
+		options: ["0", "1", "2", "3", "4"],
 	},
 	{
 		question: "How big is your group?",
@@ -61,40 +61,26 @@ $(document).ready(function () {
 		submitBtn.on('click', function () {
 
 			//obtain value of radio buttons
-			var searchArr = [];
+			
 			var firstValue = $('input:radio[name=question-0]:checked').val();
 			var secondValue = $('input:radio[name=question-1]:checked').val();
 			var thirdValue = $('input:radio[name=question-2]:checked').val();
-			var fourthValue = $('input:radio[name=question-3]:checked').val();
+			var fourthValue = $('input:radio[name=question-3]:checked').val();	
+			var zip = $("#user-input").val();
+			
 
-
-			// var checked_site_radio = $('input:radio[name=user_site]:checked').val();
-			if (firstValue) {
-				searchArr.push("Distance: " + firstValue)
-			}
-			if (secondValue) {
-				searchArr.push("Activity: " + secondValue)
-			}
-			if (thirdValue) {
-				searchArr.push("Budget: " + thirdValue)
-			}
-			if (fourthValue) {
-				searchArr.push("Group Size: " + fourthValue)
-			}
+			//checking to see if submitBtn is working
+			console.log("you clicked submit")
+			
 
 
 			//set of the results page
 			$(".quiz-container").remove();
 			$("#map").show();
-			var zip = $("#user-input").val();
-			searchArr.push("Zip Code: " + zip)
-
-			//checking to see if submitBtn is working
-			console.log("you clicked submit")
-			console.log(searchArr)
 
 		}) //end of submit function
 
+		 var apiKey = "AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0";
 
 	}) //end of start function
 
