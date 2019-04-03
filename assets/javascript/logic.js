@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 		var description = $('<div class="instruction-list">' + '<h5 class="instructions"> Answer questions below to find your activity! </h5>' + '</div>')
 
-	$('#questions-here').prepend(description);
+		$('#questions-here').prepend(description);
 
 
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j]+ "'>" + quizItems[i].options[j]) + "</div>";
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
 
 
 			} //end of j (opiton) for loop
@@ -66,22 +66,22 @@ $(document).ready(function () {
 			var secondValue = $('input:radio[name=question-1]:checked').val();
 			var thirdValue = $('input:radio[name=question-2]:checked').val();
 			var fourthValue = $('input:radio[name=question-3]:checked').val();
-	
+
 
 			// var checked_site_radio = $('input:radio[name=user_site]:checked').val();
-			if(firstValue) {
-					searchArr.push("Distance: " + firstValue)
-				}
-				if(secondValue) {
-					searchArr.push("Activity: " + secondValue)
-				}
-				if(thirdValue) {
-					searchArr.push("Budget: " + thirdValue)
-				}
-				if(fourthValue) {
-					searchArr.push("Group Size: " + fourthValue)
-				}
-			
+			if (firstValue) {
+				searchArr.push("Distance: " + firstValue)
+			}
+			if (secondValue) {
+				searchArr.push("Activity: " + secondValue)
+			}
+			if (thirdValue) {
+				searchArr.push("Budget: " + thirdValue)
+			}
+			if (fourthValue) {
+				searchArr.push("Group Size: " + fourthValue)
+			}
+
 
 			//set of the results page
 			$(".quiz-container").remove();
@@ -91,7 +91,7 @@ $(document).ready(function () {
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
-			console.log(searchArr)			
+			console.log(searchArr)
 
 		}) //end of submit function
 
