@@ -52,7 +52,18 @@ nav {
     100%{   color: yellow;    }
 }
 
+<<<<<<< HEAD
 
+=======
+#top-container {
+	background-color: lightblue;
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+#contact-name {
+	border-bottom: solid black;
+}
+>>>>>>> origin
 .quiz-items {
 	display: block;
 	background-color: #ddd;

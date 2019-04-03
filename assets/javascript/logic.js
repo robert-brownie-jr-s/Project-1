@@ -2,8 +2,8 @@ $(document).ready(function () {
 
 	var startBtn = $("#start");
 	var map, infoWindow, service;
+	$("#map").hide();
 
-	// $("#map").hide();
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -74,42 +74,43 @@ $(document).ready(function () {
 
 			//set of the results page
 			$(".quiz-container").remove();
-			// $("#map").show();
-			
-				  //this is the map
-				  function initMap() {
-					map = new google.maps.Map(document.getElementById("map"), {
-					  center: {lat: -34.397, lng: 150.644},
-					  zoom: 8
-					});
+			$("#map").show();
+
+
+			function initMap() {
+				var orangeCounty = new google.maps.LatLng(33.7175, -117.8311);
+		
+				infowindow = new google.maps.InfoWindow();
+		
+				map = new google.maps.Map(
+					document.getElementById("map"), {center: orangeCounty, zoom: 10});
+		
+				};
+				initMap();
+				service = new google.maps.places.PlacesService(map);
+		
+				service.findPlaceFromQuery(request, function(results, status) {
+				  if (status === google.maps.places.PlacesServiceStatus.OK) {
+					for (var i = 0; i < results.length; i++) {
+					  createMarker(results[i]);
+					}
+		
+					map.setCenter(results[0].geometry.location);
 				  }
-				  initMap();
-
-			// START OF API //
-			function start() {
-				// 2. Initialize the JavaScript client library.
-				gapi.client.init({
-					'apiKey': 'AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0',
-				}).then(function () {
-					// 3. Initialize and make the API request.
-					return gapi.client.request({
-						'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
-					})
-				}).then(function (response) {
-					console.log(response.result);
-				}, function (reason) {
-					console.log('Error: ' + reason.result.error.message);
 				});
-			};
-			// 1. Load the JavaScript client library.
-			gapi.load('client', start);
-			
-			window.onLoadCallback = function(){
-				gapi.auth2.init({
-					client_id: 'filler_text_for_client_id.apps.googleusercontent.com'
-				  });
+			  
+		
+			  function createMarker(place) {
+				var marker = new google.maps.Marker({
+				  map: map,
+				  position: place.geometry.location
+				});
+		
+				google.maps.event.addListener(marker, 'click', function() {
+				  infowindow.setContent(place.name);
+				  infowindow.open(map, this);
+				});
 			  }
-
 
 		}) //end of submit function
 
@@ -130,8 +131,18 @@ $(document).ready(function () {
 	firebase.initializeApp(config);
 
 
+	$("#contact").click(function(event) {
+	event.preventDefault();
+	$(".subcontainer").remove();
+	$(".quiz-container").remove();
+	$("#map").remove();
+	$("#top-container").remove();
+	
+	var contact = $('<div id="top-container" class="container">' + '<section class="main-section">' + '<h1 id="contact-name"> Contact </h1>' + '<form id="contact-form">' + '<div class="form-group">' + '<label for="name">Name</label>' + '<input type="text" class="form-control" id="name">' + '</div>' + '<div class="form-group">' + '<label for="email">Email</label>' + '<input type="email" class="form-control" id="email">' + '</div>' + '<div class="form-group">' + '<label for="message">Message</label>' + '<textarea class="form-control" id="message" rows="7">' + '</textarea>' + '</div>' + '<input type="submit">' + '</form>' + '</section>' + '</div>');
+	$('.container-fluid').append(contact);
+	
 
-
+	})
 
 
 }) //end of document ready function
