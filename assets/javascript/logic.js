@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
 	var startBtn = $("#start");
-	var map, infoWindow;
+	var map, infoWindow, service;
 
-	$("#map").hide();
+	// $("#map").hide();
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -15,8 +15,8 @@ $(document).ready(function () {
 
 	},
 	{
-		question: "Budget?",
-		options: ["expensive", "cheap"],
+		question: "On a scale from 0 (cheapest) to 4 (most expensive) what is you budget? ",
+		options: ["0", "1", "2", "3", "4"],
 	},
 	{
 		question: "How big is your group?",
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 		var description = $('<div class="instruction-list">' + '<h5 class="instructions"> Answer questions below to find your activity! </h5>' + '</div>')
 
-	$('#questions-here').prepend(description);
+		$('#questions-here').prepend(description);
 
 
 
@@ -61,110 +61,73 @@ $(document).ready(function () {
 		submitBtn.on('click', function () {
 
 			//obtain value of radio buttons
-			var searchArr = [];
-			var firstValue = $('input:radio[name=question-0]:checked').val();
-			var secondValue = $('input:radio[name=question-1]:checked').val();
-			var thirdValue = $('input:radio[name=question-2]:checked').val();
-			var fourthValue = $('input:radio[name=question-3]:checked').val();
 
+			var distance = $('input:radio[name=question-0]:checked').val();
+			var activity = $('input:radio[name=question-1]:checked').val();
+			var budget = $('input:radio[name=question-2]:checked').val();
+			var groupSize = $('input:radio[name=question-3]:checked').val();
+			var location = $("#user-input").val();
 
-			// var checked_site_radio = $('input:radio[name=user_site]:checked').val();
-			if (firstValue) {
-				searchArr.push("Distance: " + firstValue)
-			}
-			if (secondValue) {
-				searchArr.push("Activity: " + secondValue)
-			}
-			if (thirdValue) {
-				searchArr.push("Budget: " + thirdValue)
-			}
-			if (fourthValue) {
-				searchArr.push("Group Size: " + fourthValue)
-			}
-
-
-			//set of the results page
-
-
-
-			var zip = $("#user-input").val();
-			searchArr.push("Zip Code: " + zip)
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
-			console.log(searchArr)
-			console.log(zip)
 
-			// Load the stores GeoJSON onto the map.
-			map.data.loadGeoJson('stores.json');
-
-			// Define the custom marker icons, using the store's "category".
-			map.data.setStyle(feature => {
-				return {
-					icon: {
-						url: `img/icon_${feature.getProperty('category')}.png`,
-						scaledSize: new google.maps.Size(64, 64)
-					}
-				};
-			});
-
-			const apiKey = 'AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0';
-			const infoWindow = new google.maps.InfoWindow();
-			infoWindow.setOptions({ pixelOffset: new google.maps.Size(0, -30) });
-
-			// Show the information for a store when its marker is clicked.
-			map.data.addListener('click', event => {
-
-				const category = event.feature.getProperty('category');
-				const name = event.feature.getProperty('name');
-				const description = event.feature.getProperty('description');
-				const hours = event.feature.getProperty('hours');
-				const phone = event.feature.getProperty('phone');
-				const position = event.feature.getGeometry().get();
-				const content = sanitizeHTML`
-	<img style="float:left; width:200px; margin-top:30px" src="img/logo_${category}.png">
-	<div style="margin-left:220px; margin-bottom:20px;">
-	  <h2>${name}</h2><p>${description}</p>
-	  <p><b>Open:</b> ${hours}<br/><b>Phone:</b> ${phone}</p>
-	  <p><img src="https://maps.googleapis.com/maps/api/streetview?size=350x120&location=${position.lat()},${position.lng()}&key=${apiKey}"></p>
-	</div>
-  `;
-
-				infoWindow.setContent(content);
-				infoWindow.setPosition(position);
-				infoWindow.open(map);
-			});
-
-		
-
-
-			// $.ajax({
-			// 	type: "GET",
-			// 	url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + zip + "&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0",
-			// 	dataType: "text"
-			// })
-			// 
-
+			//set of the results page
 			$(".quiz-container").remove();
-		$("#map").show();
-	}) //end of submit function
+			// $("#map").show();
+			
+				  //this is the map
+				  function initMap() {
+					map = new google.maps.Map(document.getElementById("map"), {
+					  center: {lat: -34.397, lng: 150.644},
+					  zoom: 8
+					});
+				  }
+				  initMap();
+
+			// START OF API //
+			function start() {
+				// 2. Initialize the JavaScript client library.
+				gapi.client.init({
+					'apiKey': 'AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0',
+				}).then(function () {
+					// 3. Initialize and make the API request.
+					return gapi.client.request({
+						'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
+					})
+				}).then(function (response) {
+					console.log(response.result);
+				}, function (reason) {
+					console.log('Error: ' + reason.result.error.message);
+				});
+			};
+			// 1. Load the JavaScript client library.
+			gapi.load('client', start);
+			
+			window.onLoadCallback = function(){
+				gapi.auth2.init({
+					client_id: 'filler_text_for_client_id.apps.googleusercontent.com'
+				  });
+			  }
 
 
-}) //end of start function
+		}) //end of submit function
+
+	}) //end of start function
 
 //start of submit button function
 
 
-// Initialize Firebase
-var config = {
-	apiKey: "AIzaSyA0VKHpsqWkKic4BZ4Sc8ArYp7WdLvQ-Vc",
-	authDomain: "project1-c10f1.firebaseapp.com",
-	databaseURL: "https://project1-c10f1.firebaseio.com",
-	projectId: "project1-c10f1",
-	storageBucket: "project1-c10f1.appspot.com",
-	messagingSenderId: "696380136176"
-};
-firebase.initializeApp(config);;
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyA0VKHpsqWkKic4BZ4Sc8ArYp7WdLvQ-Vc",
+		authDomain: "project1-c10f1.firebaseapp.com",
+		databaseURL: "https://project1-c10f1.firebaseio.com",
+		projectId: "project1-c10f1",
+		storageBucket: "project1-c10f1.appspot.com",
+		messagingSenderId: "696380136176"
+	};
+	firebase.initializeApp(config);
 
 
 
