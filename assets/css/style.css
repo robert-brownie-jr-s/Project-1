@@ -43,10 +43,11 @@ nav {
 	display: block;
 	background-color: lightskyblue;
 	margin-left: 30%;
-	width: 50%;
+	width: 40%;
 	margin-top: 10%;
-	border-radius: 25%;
-	padding: 40px;
+	border-radius: 20%;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 #question-text {
 	/* margin:inherit ; */
