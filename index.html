@@ -49,7 +49,7 @@
       }
     }
 
-   /* 
+   
    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       infoWindow.setPosition(pos);
       infoWindow.setContent(browserHasGeolocation ?
@@ -57,7 +57,26 @@
         'Error: Your browser doesn\'t support geolocation.');
       infoWindow.open(map);
     }
-    */
+
+    // START OF API //
+			function start() {
+				// 2. Initialize the JavaScript client library.
+				gapi.client.init({
+					'apiKey': 'AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0',
+				}).then(function () {
+					// 3. Initialize and make the API request.
+					return gapi.client.request({
+						'path': 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0',
+					})
+				}).then(function (response) {
+					console.log(response.result);
+				}, function (reason) {
+					console.log('Error: ' + reason.result.error.message);
+				});
+			};
+			// 1. Load the JavaScript client library.
+			gapi.load('client', start);
+    
   </script>
 
 
@@ -127,6 +146,11 @@
 
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~LINKS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Google Maps api -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"></script>
+    <!-- Google Places Api -->
+    <script src="https://apis.google.com/js/api.js"></script>
   <!-- firebase link -->
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
   <!-- jQuery link -->
@@ -142,10 +166,7 @@
     </script>
   <!-- js link -->
   <script src="./assets/javascript/logic.js"></script>
-  <!-- Google Maps api -->
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"></script>
-
+  
 
 </body>
 
