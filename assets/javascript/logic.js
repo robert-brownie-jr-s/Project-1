@@ -5,10 +5,9 @@ $(document).ready(function () {
 
 	$("#map").hide();
 
-
 	var quizItems = [{
 		question: "How far are you willing to travel?",
-		options: ["5_miles", "10_miles", "25 miles"],
+		options: ["5 miles", "10 miles", "25 miles"],
 	},
 	{
 		question: "Activity Level",
@@ -28,11 +27,16 @@ $(document).ready(function () {
 		event.preventDefault();
 		$(".subcontainer").remove();
 
+		var description = $('<div class="instruction-list">' + '<h5 class="instructions"> Answer questions below to find your activity! </h5>' + '</div>')
+
+	$('#questions-here').prepend(description);
+
+
 
 
 		//created questions on page
 		for (i = 0; i < quizItems.length; i++) {
-			$("#questions-here").append("<h3 id='question-text' class='row-fluid'>" + quizItems[i].question + "</h3>");
+			$("#questions-here").append("<h4 id='question-text' class='row-fluid'>" + quizItems[i].question + "</h4>");
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
@@ -44,11 +48,11 @@ $(document).ready(function () {
 		} //end of i (question) for loop
 
 		var city = $('<div class="row-fluid city">' +
-			'<h3 class="card-title"> Zip Code(Must be in Orange County)</h3>' +
+			'<h4 class="card-title"> Zip Code(Must be in Orange County)</h4>' +
 			'<input id="user-input">' +
 			'</div>')
 
-		var submitBtn = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-info submit">Submit</button></div>');
+		var submitBtn = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-submit">Submit</button></div>');
 
 		$("#questions-here").append(city, submitBtn);
 

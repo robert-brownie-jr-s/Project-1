@@ -41,14 +41,13 @@ nav {
 
 .quiz-items {
 	display: block;
-	background-color: #ddd;
-	color: black;
-	width: 50%;
-	position: relative;	
-    top: 200px;
-	margin-bottom: 5;
-	margin-left: 78%;
-	right: 50%;
+	background-color: lightskyblue;
+	margin-left: 30%;
+	width: 40%;
+	margin-top: 10%;
+	border-radius: 20%;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 #question-text {
 	/* margin:inherit ; */
@@ -72,8 +71,15 @@ nav {
 }
 .submit-div {
 text-align: center;
-margin-top: 20px;
+margin-top: 10px;
+padding-bottom: 5px;
+}
+.btn-submit {
+	background-color: darkorange;
 }
 .nav-link {
 	color:white;
+}
+.instruction-list {
+border-bottom: solid black;
 }
