@@ -2,21 +2,20 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<!-- bootstrap css link -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<!-- css link -->
-	<link rel="stylesheet" href="./assets/css/style.css">
-	<title>Dirty Mike and the Boys</title>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- bootstrap css link -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- css link -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Dirty Mike and the Boys</title>
 </head>
 
 <body>
-		
-<!-- google maps -->
+
 		
 		<script>
 				var map;
@@ -28,70 +27,75 @@
 				}
 			</script>
 
-33.7175° N, 117.8311° W
   <div class="container-fluid">
+    <div class="row">
 
+      <nav class="navbar navbar-dark bg-dark">
+        <h1 class="nav-header text-center" id="title-head">Instant Plan</h1>
+
+        <div class="header-list">
+          <ul class="nav justify-content-center">
+            <a class="nav-link active" id="contact" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="about" href="#">About</a>
+            </li>
+          </ul>
+
+      </nav> <!-- end of navbar  -->
+
+    </div> <!-- end of nav row -->
+
+    <br>
     <div class="subcontainer">
-      <div class="row">
-
-        <nav class="navbar navbar-dark bg-dark">
-          <h1 class="nav-header text-center" id="title-head">Instant Plan</h1>
-
-          <div class="header-list">
-            <ul class="nav justify-content-center">
-              <a class="nav-link active" href="#">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-            </ul>
-
-        </nav> <!-- end of navbar  -->
-
-      </div> <!-- end of nav row -->
-
-      <br>
-
       <!-- start of jumbotron -->
       <div class="row">
         <div class="col-md-10">
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container jumbo text-center">
-            <h1 class="display-4">Come Make Your Day Special</h1>
-            <p class="lead text-center">Here at Instant Plan we allow you the ability to make the most of you day without
-              all the hastle of planning </p>
-            <p class="text-center">Start your Adventure by clicking the button below!</p>
-            <div class="text-center">
-              <!-- submit button -->
-              <button type="button" class="btn btn-primary" id="start">Click Me!</button>
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container jumbo text-center">
+              <h1 class="display-4">Come Make Your Day Special</h1>
+              <p class="lead text-center">Here at Instant Plan we allow you the ability to make the most of you day
+                without
+                all the hastle of planning </p>
+              <p class="text-center">Start your Adventure by clicking the button below!</p>
+              <div class="text-center">
+                <!-- submit button -->
+                <button type="button" class="btn btn-primary" id="start">Click Me!</button>
+              </div>
             </div>
           </div>
-        </div>
+
         </div> <!-- end of jumbotron -->
 
       </div><!-- end of jumbotron row -->
+
     </div><!-- end ofsubcontainer -->
+
     <div class="row">
       <div class="col-12">
 
         <div class="quiz-container">
-      
+
             <div class="row quiz-items text-center"><form id="questions-here"></form></div>
     <!-- this is a test? -->
+
+
+          <div class="quiz-items text-center">
+            <form id="questions-here"></form>
+          </div>
+
+
         </div>
       </div>
     </div>
 
-		<div id="map"></div>
-		
+    <div id="map"></div>
+
   </div> <!-- end of container -->
 
 
-
-
-
-
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~LINKS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
   <!-- firebase link -->
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
   <!-- jQuery link -->
@@ -106,10 +110,9 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
   <!-- js link -->
-	<script src="./assets/javascript/logic.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"
-		async defer></script>
-		
+  <script src="./assets/javascript/logic.js"></script>
+  <script src="https://apis.google.com/js/client.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&libraries=places&callback=initMap" async defer></script>
 
 </body>
 

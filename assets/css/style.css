@@ -9,15 +9,10 @@ body {
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
  #map {
-	/* height: 100%; */
 	height: 425px;
+	width: 50%;
   }
-  /* Optional: Makes the sample page fill the window. */
-  /* html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-  } */
+  
 
 nav {
 	width:100%;
@@ -39,23 +34,29 @@ nav {
 	top: 30%;
 }
 
+#top-container {
+	background-color: lightblue;
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+#contact-name {
+	border-bottom: solid black;
+}
 .quiz-items {
 	display: block;
-	background-color: #ddd;
-	color: black;
-	margin-left: 80%;
-	width: 50%;
-	position: absolute;
-    top: 200px;
-	margin-bottom: 5;
+	background-color: lightskyblue;
+	margin-left: 30%;
+	width: 40%;
+	margin-top: 10%;
+	border-radius: 20%;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 #question-text {
-	/* margin:inherit ; */
 	text-align: center; 
 	
 }
 .option-div {
-	/* margin: inherit; */
 	text-align: center; 
 }
 
@@ -71,8 +72,15 @@ nav {
 }
 .submit-div {
 text-align: center;
-margin-top: 20px;
+margin-top: 10px;
+padding-bottom: 5px;
+}
+.btn-submit {
+	background-color: darkorange;
 }
 .nav-link {
 	color:white;
+}
+.instruction-list {
+border-bottom: solid black;
 }
