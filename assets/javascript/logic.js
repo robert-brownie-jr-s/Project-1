@@ -3,6 +3,38 @@ $(document).ready(function () {
 	
 	var startBtn = $("#start");
 	var map, infoWindow, service;
+	
+	// google places starts
+	var request = {
+		query: 'Museum of Contemporary Art Australia',
+		fields: ['name', 'geometry'],
+	  };
+
+	  service = new google.maps.places.PlacesService(map);
+
+	  service.findPlaceFromQuery(request, function(results, status) {
+		if (status === google.maps.places.PlacesServiceStatus.OK) {
+		  for (var i = 0; i < results.length; i++) {
+			createMarker(results[i]);
+		  }
+
+		  map.setCenter(results[0].geometry.location);
+		}
+	  });
+	
+
+	function createMarker(place) {
+	  var marker = new google.maps.Marker({
+		map: map,
+		position: place.geometry.location
+	  });
+
+	  google.maps.event.addListener(marker, 'click', function() {
+		infowindow.setContent(place.name);
+		infowindow.open(map, this);
+	  });
+	}
+// google places ends
 
 
 	var quizItems = [{
@@ -63,11 +95,14 @@ $(document).ready(function () {
 			//obtain value of radio buttons
 
 			var distance = $('input:radio[name=question-0]:checked').val();
+			//converts distance in meters to miles
+			distance = 1609.34 * distance;
 			var activity = $('input:radio[name=question-1]:checked').val();
 			var budget = $('input:radio[name=question-2]:checked').val();
 			var groupSize = $('input:radio[name=question-3]:checked').val();
 			var location = $("#user-input").val();
 
+			"&radius=" + distance + "&minPriceLevel=" + budget + "&maxPriceLevel=" + budget;
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
