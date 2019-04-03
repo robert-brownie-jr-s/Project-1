@@ -49,15 +49,15 @@
       }
     }
 
-   /* 
-   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    }
-    */
+    /*
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+       infoWindow.setPosition(pos);
+       infoWindow.setContent(browserHasGeolocation ?
+         'Error: The Geolocation service failed.' :
+         'Error: Your browser doesn\'t support geolocation.');
+       infoWindow.open(map);
+     }
+     */
   </script>
 
 
@@ -112,9 +112,11 @@
       <div class="col-12">
 
         <div class="quiz-container">
-      
-             <div class="quiz-items text-center"><form id="questions-here"></form></div> 
-    
+
+          <div class="quiz-items text-center">
+            <form id="questions-here"></form>
+          </div>
+
         </div>
       </div>
     </div>
@@ -125,6 +127,9 @@
 
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~LINKS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- Google Maps api -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"></script>
   <!-- firebase link -->
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
   <!-- jQuery link -->
@@ -140,9 +145,7 @@
     </script>
   <!-- js link -->
   <script src="./assets/javascript/logic.js"></script>
-  <!-- Google Maps api -->
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"></script>
+
 
 
 </body>

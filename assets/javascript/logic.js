@@ -61,32 +61,32 @@ $(document).ready(function () {
 		submitBtn.on('click', function () {
 
 			//obtain value of radio buttons
-			
+
 			var distance = $('input:radio[name=question-0]:checked').val();
 			var activity = $('input:radio[name=question-1]:checked').val();
 			var budget = $('input:radio[name=question-2]:checked').val();
-			var groupSize = $('input:radio[name=question-3]:checked').val();	
+			var groupSize = $('input:radio[name=question-3]:checked').val();
 			var location = $("#user-input").val();
-			
+
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
-			
+
 
 
 			//set of the results page
 			$(".quiz-container").remove();
 			$("#map").show();
-			
 
-						// START OF API //
+
+			// START OF API //
 			var queryURL = "https:maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0"
 			$.ajax({
 				url: queryURL,
 				method: "GET"
 			})
 				.then(function (response) {
-				console.log(response)
+					console.log(response)
 				})
 
 		}) //end of submit function
