@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+	
 	var startBtn = $("#start");
 	var map, infoWindow, service;
 
