@@ -6,12 +6,16 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <!-- bootstrap css link -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- css link -->
   <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Dirty Mike and the Boys</title>
+
+
+  <title>Instant Plan</title>
+
 </head>
 
 <body>
@@ -20,21 +24,23 @@
     <div class="row">
 
       <nav class="navbar navbar-dark bg-dark">
-        <h1 class="nav-header text-center" id="title-head">Instant Plan</h1>
+        <h1 class="nav-header text-center" id="title-head">Instant-Plan</h1>
 
         <div class="header-list">
           <ul class="nav justify-content-center">
-            <a class="nav-link active" href="#">Contact</a>
+            <a class="nav-link blinking" id="contact" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link blinking" href="#">About</a>
             </li>
           </ul>
 
       </nav> <!-- end of navbar  -->
 
     </div> <!-- end of nav row -->
-
+    <div class="example1">
+      <h3>Proudly helping 9.19 Billion people!</h3>
+    </div>
     <br>
     <div class="subcontainer">
       <!-- start of jumbotron -->
@@ -42,11 +48,10 @@
         <div class="col-md-10">
           <div class="jumbotron jumbotron-fluid">
             <div class="container jumbo text-center">
-              <h1 class="display-4">Come Make Your Day Special</h1>
-              <p class="lead text-center">Here at Instant Plan we allow you the ability to make the most of you day
-                without
-                all the hastle of planning </p>
-              <p class="text-center">Start your Adventure by clicking the button below!</p>
+              <h1><span class="blinking">Come Make Your Day Special!</span> </h1>
+              <h3 class="text-center">Here at Instant-Plan we give you the ability to efficiently plan your day, hassle
+                free! </h3>
+              <h2 class="text-center">Find your Adventure by clicking the button below!</h2>
               <div class="text-center">
                 <!-- submit button -->
                 <button type="button" class="btn btn-primary" id="start">Click Me!</button>
@@ -65,38 +70,46 @@
 
         <div class="quiz-container">
 
-          <div class="quiz-items text-center">
+          <div class="row quiz-items text-center">
             <form id="questions-here"></form>
-          </div>
-
         </div>
+        <!-- this is a test? -->
+
+        <div class="quiz-items text-center">
+          <form id="questions-here"></form>
+        </div>
+
       </div>
     </div>
+  </div>
 
-    <div id="map"></div>
+  <div id="map"></div>
 
   </div> <!-- end of container -->
 
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~LINKS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-  <!-- firebase link -->
-  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-  <!-- jQuery link -->
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+    <!-- firebase link -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <!-- jQuery link -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+      </script>
+    <!-- bootstrap js link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+      </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+      </script>
+    <!-- js link -->
+    <script src="./assets/javascript/logic.js"></script>
+ <script src="https://apis.google.com/js/client.js">
     </script>
-  <!-- bootstrap js link -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-  <!-- js link -->
-  <script src="./assets/javascript/logic.js"></script>
-  <script src="https://apis.google.com/js/client.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&libraries=places" async defer></script>
+    <script src="https://apis.google.com/js/client.js"></script>
+    <!-- Libarary for google places -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&libraries=places"
+      async defer></script>
 
 </body>
 

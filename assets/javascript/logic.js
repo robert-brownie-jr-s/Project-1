@@ -1,8 +1,10 @@
+
 $(document).ready(function () {
+
 
 	var startBtn = $("#start");
 	var map, infoWindow, service;
- 	$("#map").hide()
+	$("#map").hide()
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -22,6 +24,26 @@ $(document).ready(function () {
 		question: "How big is your group?",
 		options: ["1", "2", "3+"],
 	}] //end of quiz items 
+
+	//map initialization to OC
+	var orangeCounty = {
+		lat: 33.7175,
+		lng: -117.8311
+	};
+	function initMap() {
+		// var orangeCounty = {
+		// 	lat: -33.866, 
+		// 	lng: 151.196
+		// };
+
+		infowindow = new google.maps.InfoWindow();
+
+		map = new google.maps.Map(document.getElementById("map"), {
+			center: orangeCounty,
+			zoom: 10
+		});
+
+	};
 
 	startBtn.click(function (event) {
 		event.preventDefault();
@@ -63,11 +85,19 @@ $(document).ready(function () {
 			//obtain value of radio buttons
 
 			var distance = $('input:radio[name=question-0]:checked').val();
+			//converts distance in meters to miles
+			distance = 1609.34 * distance;
 			var activity = $('input:radio[name=question-1]:checked').val();
 			var budget = $('input:radio[name=question-2]:checked').val();
 			var groupSize = $('input:radio[name=question-3]:checked').val();
 			var location = $("#user-input").val();
 
+			// var request = {
+			// 	radius: distance,
+			// 	minPriceLevel: budget,
+			// 	maxPriceLevel: budget
+			// };
+			// "&radius=" + distance + "&minPriceLevel=" + budget + "&maxPriceLevel=" + budget;
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
@@ -76,46 +106,62 @@ $(document).ready(function () {
 			$(".quiz-container").remove();
 			$("#map").show();
 
-			function initMap() {
-				var orangeCounty = new google.maps.LatLng(33.7175, -117.8311);
-		
-				infowindow = new google.maps.InfoWindow();
-		
-				map = new google.maps.Map(
-					document.getElementById("map"), {center: orangeCounty, zoom: 11});
-				};
-				initMap();
 
-				var request = {
-					query: "Chik Fil A",
-					fields: ["name", "geometry", "price_level", "rating", "opening_hours","icon"]
-				  };
-				  
- 
-				service = new google.maps.places.PlacesService(map);
-				
-				service.findPlaceFromQuery(request, function(results, status) {
-				  if (status === google.maps.places.PlacesServiceStatus.OK) {
-					for (var i = 0; i < results.length; i++) {
-					  createMarker(results[i]);
-					 
-					}
-					map.setCenter(zip);
-				  }
+
+			initMap();
+			var service = new google.maps.places.PlacesService(map);
+
+
+
+			// Create the places service.
+
+			// var getNextPage = null;
+			// var moreButton = document.getElementById('more');
+			// moreButton.onclick = function() {
+			//   moreButton.disabled = true;
+			//   if (getNextPage) getNextPage();
+			// };
+
+			// Perform a nearby search.
+			service.nearbySearch(
+				{
+					location: orangeCounty,
+					radius: distance,
+					type: ['store']
+				},
+				function (results, status, pagination) {
+					if (status !== 'OK') return;
+
+					createMarkers(results);
+					//   moreButton.disabled = !pagination.hasNextPage;
+					getNextPage = pagination.hasNextPage && function () {
+						pagination.nextPage();
+					};
 				});
-			  
-		
-			  function createMarker(place) {
-				var marker = new google.maps.Marker({
-				  map: map,
-				  position: place.geometry.location
-				});
-		
-				google.maps.event.addListener(marker, 'click', function() {
-				  infowindow.setContent(place.name);
-				  infowindow.open(map, this);
-				});
-			  }
+
+
+
+			function createMarkers(places) {
+				var bounds = new google.maps.LatLngBounds();
+				var placesList = document.getElementById('places');
+
+				for (var i = 0, place; place = places[i]; i++) {
+					var image = {
+						url: place.icon,
+						size: new google.maps.Size(71, 71),
+						origin: new google.maps.Point(0, 0),
+						anchor: new google.maps.Point(17, 34),
+						scaledSize: new google.maps.Size(25, 25)
+					};
+
+					var marker = new google.maps.Marker({
+						map: map,
+						icon: image,
+						title: place.name,
+						position: place.geometry.location
+					})
+				}
+			}
 
 		}) //end of submit function
 
@@ -136,8 +182,18 @@ $(document).ready(function () {
 	firebase.initializeApp(config);
 
 
+	$("#contact").click(function (event) {
+		event.preventDefault();
+		$(".subcontainer").remove();
+		$(".quiz-container").remove();
+		$("#map").remove();
+		$("#top-container").remove();
+
+		var contact = $('<div id="top-container" class="container">' + '<section class="main-section">' + '<h1 id="contact-name"> Contact </h1>' + '<form id="contact-form">' + '<div class="form-group">' + '<label for="name">Name</label>' + '<input type="text" class="form-control" id="name">' + '</div>' + '<div class="form-group">' + '<label for="email">Email</label>' + '<input type="email" class="form-control" id="email">' + '</div>' + '<div class="form-group">' + '<label for="message">Message</label>' + '<textarea class="form-control" id="message" rows="7">' + '</textarea>' + '</div>' + '<input type="submit">' + '</form>' + '</section>' + '</div>');
+		$('.container-fluid').append(contact);
 
 
+	});
 
 
 }) //end of document ready function
