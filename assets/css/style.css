@@ -10,6 +10,7 @@ body {
  * element that contains the map. */
  #map {
 	height: 425px;
+	width: 50%;
   }
   
 

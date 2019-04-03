@@ -62,11 +62,11 @@ $(document).ready(function () {
 
 			//obtain value of radio buttons
 			
-			var firstValue = $('input:radio[name=question-0]:checked').val();
-			var secondValue = $('input:radio[name=question-1]:checked').val();
-			var thirdValue = $('input:radio[name=question-2]:checked').val();
-			var fourthValue = $('input:radio[name=question-3]:checked').val();	
-			var zip = $("#user-input").val();
+			var distance = $('input:radio[name=question-0]:checked').val();
+			var activity = $('input:radio[name=question-1]:checked').val();
+			var budget = $('input:radio[name=question-2]:checked').val();
+			var groupSize = $('input:radio[name=question-3]:checked').val();	
+			var location = $("#user-input").val();
 			
 
 			//checking to see if submitBtn is working
@@ -77,10 +77,19 @@ $(document).ready(function () {
 			//set of the results page
 			$(".quiz-container").remove();
 			$("#map").show();
+			
+
+						// START OF API //
+			var queryURL = "https:maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0"
+			$.ajax({
+				url: queryURL,
+				method: "GET"
+			})
+				.then(function (response) {
+				console.log(response)
+				})
 
 		}) //end of submit function
-
-		 var apiKey = "AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0";
 
 	}) //end of start function
 
@@ -96,7 +105,7 @@ $(document).ready(function () {
 		storageBucket: "project1-c10f1.appspot.com",
 		messagingSenderId: "696380136176"
 	};
-	firebase.initializeApp(config);;
+	firebase.initializeApp(config);
 
 
 
