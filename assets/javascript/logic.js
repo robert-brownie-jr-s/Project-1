@@ -35,6 +35,7 @@ $(document).ready(function () {
 	  });
 	}
 // google places ends
+	$("#map").hide();
 
 
 	var quizItems = [{
@@ -109,43 +110,16 @@ $(document).ready(function () {
 
 			//set of the results page
 			$(".quiz-container").remove();
-			/*
-				  //this is the map
-				  function initMap() {
-					map = new google.maps.Map(document.getElementById("map"), {
-					  center: {lat: -34.397, lng: 150.644},
-					  zoom: 8
-					});
-				  }
-				  initMap();
+			$("#map").show();
 
-			// START OF API //
-			function start() {
-				// 2. Initialize the JavaScript client library.
-				gapi.client.init({
-					'apiKey': 'AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0',
-				}).then(function () {
-					// 3. Initialize and make the API request.
-					return gapi.client.request({
-						'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
-					})
-				}).then(function (response) {
-					console.log(response.result);
-				}, function (reason) {
-					console.log('Error: ' + reason.result.error.message);
-				});
-			};
-			// 1. Load the JavaScript client library.
-			gapi.load('client', start);
-			*/
 
 			function initMap() {
-				var sydney = new google.maps.LatLng(-33.867, 151.195);
+				var orangeCounty = new google.maps.LatLng(33.7175, -117.8311);
 		
 				infowindow = new google.maps.InfoWindow();
 		
 				map = new google.maps.Map(
-					document.getElementById("map"), {center: sydney, zoom: 15});
+					document.getElementById("map"), {center: orangeCounty, zoom: 10});
 		
 				};
 				initMap();
@@ -193,8 +167,18 @@ $(document).ready(function () {
 	firebase.initializeApp(config);
 
 
+	$("#contact").click(function(event) {
+	event.preventDefault();
+	$(".subcontainer").remove();
+	$(".quiz-container").remove();
+	$("#map").remove();
+	$("#top-container").remove();
+	
+	var contact = $('<div id="top-container" class="container">' + '<section class="main-section">' + '<h1 id="contact-name"> Contact </h1>' + '<form id="contact-form">' + '<div class="form-group">' + '<label for="name">Name</label>' + '<input type="text" class="form-control" id="name">' + '</div>' + '<div class="form-group">' + '<label for="email">Email</label>' + '<input type="email" class="form-control" id="email">' + '</div>' + '<div class="form-group">' + '<label for="message">Message</label>' + '<textarea class="form-control" id="message" rows="7">' + '</textarea>' + '</div>' + '<input type="submit">' + '</form>' + '</section>' + '</div>');
+	$('.container-fluid').append(contact);
+	
 
-
+	})
 
 
 }) //end of document ready function
