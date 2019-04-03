@@ -18,7 +18,8 @@
 
    <!-- Google Maps api -->
    <script async defer
-   src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"></script>
+   src="https://maps.googleapis.com/maps/api/js?libraries=places&region=JP&key=AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0&callback=initMap"></script>
+   
   
   <!-- google maps -->
   <script>
@@ -32,7 +33,6 @@
       });
       infoWindow = new google.maps.InfoWindow;
 
-      // Try HTML5 geolocation.
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
           var pos = {

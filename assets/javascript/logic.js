@@ -90,9 +90,11 @@ $(document).ready(function () {
 					console.log(response.result);
 				}, function (reason) {
 					console.log('Error: ' + reason.result.error.message);
-				});// 1. Load the JavaScript client library.
+				});
 			};
+			// 1. Load the JavaScript client library.
 			gapi.load('client', start);
+
 
 		}) //end of submit function
 
