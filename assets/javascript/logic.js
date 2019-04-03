@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
 	var startBtn = $("#start");
-	var map, infoWindow;
+	var map, infoWindow, service;
 
-	$("#map").hide();
+	// $("#map").hide();
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -15,8 +15,8 @@ $(document).ready(function () {
 
 	},
 	{
-		question: "Budget?",
-		options: ["expensive", "cheap"],
+		question: "On a scale from 0 (cheapest) to 4 (most expensive) what is you budget? ",
+		options: ["0", "1", "2", "3", "4"],
 	},
 	{
 		question: "How big is your group?",
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 		var description = $('<div class="instruction-list">' + '<h5 class="instructions"> Answer questions below to find your activity! </h5>' + '</div>')
 
-	$('#questions-here').prepend(description);
+		$('#questions-here').prepend(description);
 
 
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j]+ "'>" + quizItems[i].options[j]) + "</div>";
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
 
 
 			} //end of j (opiton) for loop
@@ -61,40 +61,57 @@ $(document).ready(function () {
 		submitBtn.on('click', function () {
 
 			//obtain value of radio buttons
-			var searchArr = [];
-			var firstValue = $('input:radio[name=question-0]:checked').val();
-			var secondValue = $('input:radio[name=question-1]:checked').val();
-			var thirdValue = $('input:radio[name=question-2]:checked').val();
-			var fourthValue = $('input:radio[name=question-3]:checked').val();
-	
 
-			// var checked_site_radio = $('input:radio[name=user_site]:checked').val();
-			if(firstValue) {
-					searchArr.push("Distance: " + firstValue)
-				}
-				if(secondValue) {
-					searchArr.push("Activity: " + secondValue)
-				}
-				if(thirdValue) {
-					searchArr.push("Budget: " + thirdValue)
-				}
-				if(fourthValue) {
-					searchArr.push("Group Size: " + fourthValue)
-				}
-			
+			var distance = $('input:radio[name=question-0]:checked').val();
+			var activity = $('input:radio[name=question-1]:checked').val();
+			var budget = $('input:radio[name=question-2]:checked').val();
+			var groupSize = $('input:radio[name=question-3]:checked').val();
+			var location = $("#user-input").val();
 
-			//set of the results page
-			$(".quiz-container").remove();
-			$("#map").show();
-			var zip = $("#user-input").val();
-			searchArr.push("Zip Code: " + zip)
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
-			console.log(searchArr)			
+
+			//set of the results page
+			$(".quiz-container").remove();
+			// $("#map").show();
+			
+				  //this is the map
+				  function initMap() {
+					map = new google.maps.Map(document.getElementById("map"), {
+					  center: {lat: -34.397, lng: 150.644},
+					  zoom: 8
+					});
+				  }
+				  initMap();
+
+			// START OF API //
+			function start() {
+				// 2. Initialize the JavaScript client library.
+				gapi.client.init({
+					'apiKey': 'AIzaSyCLoFEbhSlB0abkW_Ipic1I18qD7-mtHa0',
+				}).then(function () {
+					// 3. Initialize and make the API request.
+					return gapi.client.request({
+						'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
+					})
+				}).then(function (response) {
+					console.log(response.result);
+				}, function (reason) {
+					console.log('Error: ' + reason.result.error.message);
+				});
+			};
+			// 1. Load the JavaScript client library.
+			gapi.load('client', start);
+			
+			window.onLoadCallback = function(){
+				gapi.auth2.init({
+					client_id: 'filler_text_for_client_id.apps.googleusercontent.com'
+				  });
+			  }
+
 
 		}) //end of submit function
-
 
 	}) //end of start function
 
@@ -110,7 +127,7 @@ $(document).ready(function () {
 		storageBucket: "project1-c10f1.appspot.com",
 		messagingSenderId: "696380136176"
 	};
-	firebase.initializeApp(config);;
+	firebase.initializeApp(config);
 
 
 
