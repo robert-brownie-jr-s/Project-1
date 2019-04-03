@@ -2,6 +2,7 @@ $(document).ready(function () {
 
 	var startBtn = $("#start");
 	var map, infoWindow, service;
+	$("#map").hide();
 
 
 	var quizItems = [{
@@ -73,6 +74,7 @@ $(document).ready(function () {
 
 			//set of the results page
 			$(".quiz-container").remove();
+			$("#map").show();
 
 
 			function initMap() {
