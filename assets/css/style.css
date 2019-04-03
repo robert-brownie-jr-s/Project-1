@@ -36,8 +36,22 @@ nav {
 	background: none;
 	color: white;
 	position: relative;
-	top: 40%;
+	top: 0%;
 }
+
+/* blinking text here  */
+
+.blinking{
+    animation:blinkingText 3.5s infinite;
+}
+@keyframes blinkingText{
+    0%{     color: rgb(250, 244, 244);    }
+    49%{    color: green; }
+    50%{    color: orange; }
+    99%{    color:wheat;  }
+    100%{   color: yellow;    }
+}
+
 
 .quiz-items {
 	display: block;
