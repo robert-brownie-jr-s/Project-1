@@ -55,7 +55,7 @@ nav {
 		100%{color:teal}
 }
 /* start of marquee */
-<style>
+
 .example1 {
  height: 50px;	
  overflow: hidden;
@@ -100,7 +100,6 @@ nav {
  transform: translateX(-100%); 
  }
 }
-</style>
 
 
 
@@ -110,7 +109,7 @@ nav {
 	color: black;
 	margin-left: 30%;
 	width: 40%;
-	margin-bottom: 20%
+	margin-bottom: 40%
 	/* position: absolute; */
 
 
