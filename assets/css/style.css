@@ -39,6 +39,12 @@ nav {
 	top: 0%;
 }
 
+#top-container {
+	background-color: lightblue;
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+
 /* blinking text here  */
 
 .blinking{
