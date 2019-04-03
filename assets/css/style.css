@@ -34,6 +34,14 @@ nav {
 	top: 30%;
 }
 
+#top-container {
+	background-color: lightblue;
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+#contact-name {
+	border-bottom: solid black;
+}
 .quiz-items {
 	display: block;
 	background-color: lightskyblue;

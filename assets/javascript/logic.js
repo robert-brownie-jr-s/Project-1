@@ -2,6 +2,7 @@ $(document).ready(function () {
 
 	var startBtn = $("#start");
 	var map, infoWindow, service;
+	$("#map").hide();
 
 
 	var quizItems = [{
@@ -73,6 +74,7 @@ $(document).ready(function () {
 
 			//set of the results page
 			$(".quiz-container").remove();
+			$("#map").show();
 
 
 			function initMap() {
@@ -129,8 +131,18 @@ $(document).ready(function () {
 	firebase.initializeApp(config);
 
 
+	$("#contact").click(function(event) {
+	event.preventDefault();
+	$(".subcontainer").remove();
+	$(".quiz-container").remove();
+	$("#map").remove();
+	$("#top-container").remove();
+	
+	var contact = $('<div id="top-container" class="container">' + '<section class="main-section">' + '<h1 id="contact-name"> Contact </h1>' + '<form id="contact-form">' + '<div class="form-group">' + '<label for="name">Name</label>' + '<input type="text" class="form-control" id="name">' + '</div>' + '<div class="form-group">' + '<label for="email">Email</label>' + '<input type="email" class="form-control" id="email">' + '</div>' + '<div class="form-group">' + '<label for="message">Message</label>' + '<textarea class="form-control" id="message" rows="7">' + '</textarea>' + '</div>' + '<input type="submit">' + '</form>' + '</section>' + '</div>');
+	$('.container-fluid').append(contact);
+	
 
-
+	})
 
 
 }) //end of document ready function
