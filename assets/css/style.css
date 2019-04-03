@@ -9,10 +9,15 @@ body {
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
  #map {
+	/* height: 100%; */
 	height: 425px;
-	width: 50%;
   }
-  
+  /* Optional: Makes the sample page fill the window. */
+  /* html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+  } */
 
 nav {
 	width:100%;
@@ -31,32 +36,91 @@ nav {
 	background: none;
 	color: white;
 	position: relative;
-	top: 30%;
+	top: 0%;
 }
 
-#top-container {
-	background-color: lightblue;
-	padding-top: 30px;
-	padding-bottom: 10px;
+/* blinking text here  */
+
+.blinking{
+    animation:blinkingText 3.5s infinite;
 }
-#contact-name {
-	border-bottom: solid black;
+@keyframes blinkingText{
+    0%{     color: rgb(250, 244, 244);    }
+    49%{    color: green; }
+    50%{    color: orange; }
+    99%{    color:wheat;  }
+		100%{   color: yellow;    }
+		90%{ color: red}
+		80%{ color:purple}
+		100%{color:teal}
 }
+/* start of marquee */
+<style>
+.example1 {
+ height: 50px;	
+ overflow: hidden;
+ position: relative;
+}
+.example1 h3 {
+ font-size: 3em;
+ color: white;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: example1 15s linear infinite;
+ -webkit-animation: example1 15s linear infinite;
+ animation: example1 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes example1 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes example1 {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%); 
+ }
+}
+</style>
+
+
+
 .quiz-items {
 	display: block;
-	background-color: lightskyblue;
+	background-color: #ddd;
+	color: black;
 	margin-left: 30%;
 	width: 40%;
-	margin-top: 10%;
-	border-radius: 20%;
-	padding-left: 50px;
-	padding-right: 50px;
-}
+	margin-bottom: 20%
+	/* position: absolute; */
+
+
 #question-text {
+	/* margin:inherit ; */
 	text-align: center; 
 	
 }
 .option-div {
+	/* margin: inherit; */
 	text-align: center; 
 }
 
@@ -72,15 +136,8 @@ nav {
 }
 .submit-div {
 text-align: center;
-margin-top: 10px;
-padding-bottom: 5px;
-}
-.btn-submit {
-	background-color: darkorange;
+margin-top: 20px;
 }
 .nav-link {
 	color:white;
-}
-.instruction-list {
-border-bottom: solid black;
 }
