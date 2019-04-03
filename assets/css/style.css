@@ -36,11 +36,13 @@ nav {
 
 .quiz-items {
 	display: block;
-	background-color: #ddd;
-	color: black;
+	background-color: lightskyblue;
 	margin-left: 30%;
 	width: 40%;
 	margin-top: 10%;
+	border-radius: 20%;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 #question-text {
 	text-align: center; 
@@ -64,6 +66,9 @@ nav {
 text-align: center;
 margin-top: 10px;
 padding-bottom: 5px;
+}
+.btn-submit {
+	background-color: darkorange;
 }
 .nav-link {
 	color:white;
