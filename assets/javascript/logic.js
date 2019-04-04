@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
-
-
+// movie,park,club
+	var predeterminedChoices = [[0,0,0,0],[1,2,1,1],[2,1,2,1]]
 	var startBtn = $("#start");
 	var map, infoWindow, service;
 	$("#map").hide()
@@ -83,7 +83,8 @@ $(document).ready(function () {
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-" + j + " ' name='question-" + i + "' value= " + j + "'>" + quizItems[i].options[j]) + "</div>";
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + j + ">" + quizItems[i].options[j]) + "</div>";
+
 
 			} //end of j (opiton) for loop
 
@@ -98,6 +99,7 @@ $(document).ready(function () {
 		submitBtn.on('click', function () {
 
 			//obtain value of radio buttons
+
 
 			var distance = $('input:radio[name=question-0]:checked').val();
 			function distanceConverter() {
@@ -118,10 +120,23 @@ $(document).ready(function () {
 			var activity = $('input:radio[name=question-1]:checked').val();
 			var budget = $('input:radio[name=question-2]:checked').val();
 			var groupSize = $('input:radio[name=question-3]:checked').val();
-			var location = $("#user-input").val();
+			// var location = $('input:radio[name=question-0]:checked').val();
 			console.log(activity)
 			console.log(budget)
 			console.log(groupSize)
+			console.log(distance)
+	
+			for (var i = 0; i < predeterminedChoices.length; i++) { 
+				if (predeterminedChoices[i][0] === distance &&
+					predeterminedChoices[i][1] === activity &&
+					predeterminedChoices[i][2] === budget &&
+					predeterminedChoices[i][3] === groupSize ){
+						// create div element 
+						// add string "movie" to element
+						// append* div under map
+						// **add tex to div element- append div to jquery
+					}
+			}
 
 
 
