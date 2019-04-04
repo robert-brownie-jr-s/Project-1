@@ -60,7 +60,7 @@ $(document).ready(function () {
 		event.preventDefault();
 		$(".subcontainer").remove();
 
-		var description = $('<div class="instruction-list">' + '<h5 class="instructions"> Answer questions below to find your activity! </h5>' + '</div>')
+		var description = $('<div class="instruction-list">' + '<h2 class="instructions"> Answer questions below to find your activity! </h2>' + '</div>')
 
 		$('#questions-here').prepend(description);
 
