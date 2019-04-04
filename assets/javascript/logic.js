@@ -1,7 +1,6 @@
 
 $(document).ready(function () {
 	// movie,park,club
-	var predeterminedChoices = [[0, 0, 0, 0], [1, 2, 1, 1], [2, 1, 2, 1]]
 	var startBtn = $("#start");
 	var map, infoWindow, service;
 	var adventure;
@@ -39,22 +38,6 @@ $(document).ready(function () {
 			zoom: 10
 		});
 	};
-/*
-	function toggleBounce() {
-		if (marker.getAnimation() !== null) {
-		  marker.setAnimation(null);
-		} else {
-		  marker.setAnimation(google.maps.Animation.BOUNCE);
-		}
-	  }
-
-
-
-	var request = {
-		placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
-		fields: ['name', 'formatted_address', 'place_id', 'geometry']
-	};
-	*/
 	
 	startBtn.click(function (event) {
 		event.preventDefault();
@@ -99,7 +82,6 @@ $(document).ready(function () {
 					distance = 25;
 				}
 
-
 				//converts distance in meters to miles
 				distance = 1609.34 * distance;
 			}
@@ -109,10 +91,6 @@ $(document).ready(function () {
 			var budget = $('input:radio[name=question-2]:checked').val();
 			var groupSize = $('input:radio[name=question-3]:checked').val();
 			// var location = $('input:radio[name=question-0]:checked').val();
-			console.log(activity)
-			console.log(budget)
-			console.log(groupSize)
-			console.log("distance: " + distance)
 
 			function whereToGO() {
 
@@ -165,7 +143,6 @@ $(document).ready(function () {
 
 
 			function createMarkers(places) {
-// toggleBounce();
 				var bounds = new google.maps.LatLngBounds();
 				var placesList = document.getElementById('places');
 
@@ -188,10 +165,10 @@ $(document).ready(function () {
 			}
 		
 		}) //end of submit function
-		
+
 	}) //end of start function
 
-
+	 //ran out of time for firebase
 	// Initialize Firebase
 	var config = {
 		apiKey: "AIzaSyA0VKHpsqWkKic4BZ4Sc8ArYp7WdLvQ-Vc",
