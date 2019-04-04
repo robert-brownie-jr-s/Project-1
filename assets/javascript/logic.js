@@ -39,7 +39,7 @@ $(document).ready(function () {
 			zoom: 10
 		});
 	};
-
+/*
 	function toggleBounce() {
 		if (marker.getAnimation() !== null) {
 		  marker.setAnimation(null);
@@ -49,10 +49,12 @@ $(document).ready(function () {
 	  }
 
 
+
 	var request = {
 		placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
 		fields: ['name', 'formatted_address', 'place_id', 'geometry']
 	};
+	*/
 
 	startBtn.click(function (event) {
 		event.preventDefault();
@@ -162,7 +164,7 @@ $(document).ready(function () {
 
 
 			function createMarkers(places) {
-toggleBounce();
+// toggleBounce();
 				var bounds = new google.maps.LatLngBounds();
 				var placesList = document.getElementById('places');
 
