@@ -13,12 +13,12 @@ $(document).ready(function () {
 	},
 	{
 		question: "What type of Activity?",
-		options: ["Night Out", "Outdoor Extravaganza", "Grab a Bite",],
+		options: ["Night Out", "Outdoor Extravaganza", "Indoor Mystery",],
 
 	},
 	{
 		question: "On a scale from 1 (cheapest) to 3 (most expensive) what is you budget? ",
-		options: ["0", "1", "2", "3", "4"],
+		options: ["1", "2", "3"],
 	},
 	{
 		question: "How many people?",
@@ -100,23 +100,24 @@ $(document).ready(function () {
 
 			//obtain value of radio buttons
 
-
 			var distance = $('input:radio[name=question-0]:checked').val();
-			function distanceConverter() {
-
-				if (distance === 0) {
+			function distanceConverter()
+			{
+				
+				if (distance == 0) {
 					distance = 5;
-				} else if (distance === 1) {
+				} else if (distance == 1) {
 					distance = 10;
-				} else if (distance === 2) {
+				} else if (distance == 2) {
 					distance = 25;
 				}
-			}
-			distanceConverter(distance);
-			console.log(distance)
+			
+				
 			//converts distance in meters to miles
 			distance = 1609.34 * distance;
-			
+		}
+		distanceConverter();
+
 			var activity = $('input:radio[name=question-1]:checked').val();
 			var budget = $('input:radio[name=question-2]:checked').val();
 			var groupSize = $('input:radio[name=question-3]:checked').val();
@@ -124,7 +125,7 @@ $(document).ready(function () {
 			console.log(activity)
 			console.log(budget)
 			console.log(groupSize)
-			console.log(distance)
+			console.log("distance: " + distance)
 	
 			for (var i = 0; i < predeterminedChoices.length; i++) { 
 				if (predeterminedChoices[i][0] === distance &&
