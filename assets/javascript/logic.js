@@ -22,7 +22,7 @@ $(document).ready(function () {
 	},
 	{
 		question: "How many people?",
-		options: ["Solo", "Couple", "Group", "A LOT"],
+		options: ["Solo", "Couple", "Group"],
 	}] //end of quiz items 
 
 	//map initialization to OC 
@@ -37,38 +37,9 @@ $(document).ready(function () {
 			center: orangeCounty,
 			zoom: 10
 		});
-		/*
-		infowindow = new google.maps.InfoWindow();
-		// Try HTML5 geolocation.
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function (position) {
-				var pos = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude
-				};
-
-				infoWindow.setPosition(pos);
-				infoWindow.setContent('Location found.');
-				infoWindow.open(map);
-				map.setCenter(pos);
-			}, function () {
-				handleLocationError(true, infoWindow, map.getCenter());
-			});
-		} else {
-			// Browser doesn't support Geolocation
-			handleLocationError(false, infoWindow, map.getCenter());
-		} */
+		
 	};
-	/*
-		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-			infoWindow.setPosition(pos);
-			infoWindow.setContent(browserHasGeolocation ?
-				'Error: The Geolocation service failed.' :
-				'Error: Your browser doesn\'t support geolocation.');
-			infoWindow.open(map);
-			initMap();
-		}
-	*/
+	
 	startBtn.click(function (event) {
 		event.preventDefault();
 		$(".subcontainer").remove();
@@ -126,19 +97,26 @@ $(document).ready(function () {
 			console.log(budget)
 			console.log(groupSize)
 			console.log("distance: " + distance)
-	
+	function whereToGO() {
 			for (var i = 0; i < predeterminedChoices.length; i++) { 
 				if (predeterminedChoices[i][0] === distance &&
 					predeterminedChoices[i][1] === activity &&
 					predeterminedChoices[i][2] === budget &&
 					predeterminedChoices[i][3] === groupSize ){
+
 						// create div element 
 						// add string "movie" to element
 						// append* div under map
 						// **add tex to div element- append div to jquery
 					}
 			}
+			//night out = 0 outdoor = 1 indoor = 2
+			//cheap/free=0 mid tier=1 expensive=3
+			//solo=0 couple=1 group=3
+			if (activity == 0 ){
 
+			}
+		}
 
 
 
