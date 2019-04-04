@@ -9,7 +9,7 @@ body {
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
  #map {
-	height: 425px;git merge
+	height: 425px;
 	width: 45%;
   }
   
