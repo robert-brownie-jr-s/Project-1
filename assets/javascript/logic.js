@@ -159,11 +159,12 @@ $(document).ready(function () {
 
 			function money() {
 				if (activity <= 1 && budget <= 1 && groupSize <= 1 ) {
-
-				} else if (activity === 0 && budget === 0 && groupSize === 0 )
+					//nightOut-0/1-solo/couples
+				} else if (activity <= 1 && budget >= 2 && groupSize > 0 )
 				 {
-
-				} else if (activity === 1 && budget === 0 && groupSize === 0 ) 
+					//if the group is greater than  1person then suggest
+					//night club
+				} else if (activity <= 1 && budget >= 2 && groupSize < 1 ) 
 				{
 
 				} else if (activity === 2 && budget === 0 && groupSize === 0 ) 
