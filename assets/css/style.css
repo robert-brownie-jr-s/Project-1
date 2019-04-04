@@ -9,8 +9,8 @@ body {
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
  #map {
-	height: 425px;
-	width: 45%;
+	height: 725px;
+	/* width: 45%; */
   }
   
 .instructions {

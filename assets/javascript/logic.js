@@ -6,7 +6,7 @@ $(document).ready(function () {
 	var map, infoWindow, service;
 	var adventure;
 	$("#map").hide()
-
+ 
 
 	var quizItems = [{
 		question: "How far are you willing to travel?",
@@ -55,9 +55,10 @@ $(document).ready(function () {
 		fields: ['name', 'formatted_address', 'place_id', 'geometry']
 	};
 	*/
-
+	
 	startBtn.click(function (event) {
 		event.preventDefault();
+		
 		$(".subcontainer").remove();
 
 		var description = $('<div class="instruction-list">' + '<h2 class="instructions"> Answer questions below to find your activity! </h2>' + '</div>')
@@ -187,7 +188,7 @@ $(document).ready(function () {
 			}
 		
 		}) //end of submit function
-
+		
 	}) //end of start function
 
 
