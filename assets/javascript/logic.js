@@ -18,67 +18,26 @@ $(document).ready(function () {
 	},
 	{
 		question: "On a scale from 1 (cheapest) to 3 (most expensive) what is you budget? ",
-		options: ["0","1", "2", "3", "4"],
+		options: ["0", "1", "2", "3", "4"],
 	},
 	{
 		question: "How many people?",
 		options: ["Solo", "Couple", "Group", "A LOT"],
 	}] //end of quiz items 
 
-
-	//********************************************************//
-
-	/*
-		function initMap() {
-		  map = new google.maps.Map(document.getElementById("map"), {
-			center: {lat: 33.7175, lng: -117.8311},
-			zoom: 11
-		  });
-		  infoWindow = new google.maps.InfoWindow;
-	
-		  // Try HTML5 geolocation.
-		  if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-			  var pos = {
-				lat: position.coords.latitude,
-				lng: position.coords.longitude
-			  };
-	
-			  infoWindow.setPosition(pos);
-			  infoWindow.setContent('Location found.');
-			  infoWindow.open(map);
-			  map.setCenter(pos);
-			}, function() {
-			  handleLocationError(true, infoWindow, map.getCenter());
-			});
-		  } else {
-			// Browser doesn't support Geolocation
-			handleLocationError(false, infoWindow, map.getCenter());
-		  }
-		}
-	
-		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-		  infoWindow.setPosition(pos);
-		  infoWindow.setContent(browserHasGeolocation ?
-								'Error: The Geolocation service failed.' :
-								'Error: Your browser doesn\'t support geolocation.');
-		  infoWindow.open(map);
-		}
-	*/ //*******************************************//
-
-
-	//map initialization to OC
+	//map initialization to OC 
 	var orangeCounty = {
-		lat: 33.7175,
-		lng: -117.8311
+		lat: 33.6471,
+		lng: -117.8358
 	};
 
 	function initMap() {
-
+		infowindow = new google.maps.InfoWindow()
 		map = new google.maps.Map(document.getElementById("map"), {
 			center: orangeCounty,
 			zoom: 10
 		});
+		/*
 		infowindow = new google.maps.InfoWindow();
 		// Try HTML5 geolocation.
 		if (navigator.geolocation) {
@@ -98,18 +57,18 @@ $(document).ready(function () {
 		} else {
 			// Browser doesn't support Geolocation
 			handleLocationError(false, infoWindow, map.getCenter());
-		}
+		} */
 	};
-
-	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-		infoWindow.setPosition(pos);
-		infoWindow.setContent(browserHasGeolocation ?
-			'Error: The Geolocation service failed.' :
-			'Error: Your browser doesn\'t support geolocation.');
-		infoWindow.open(map);
-		initMap();
-	}
-
+	/*
+		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+			infoWindow.setPosition(pos);
+			infoWindow.setContent(browserHasGeolocation ?
+				'Error: The Geolocation service failed.' :
+				'Error: Your browser doesn\'t support geolocation.');
+			infoWindow.open(map);
+			initMap();
+		}
+	*/
 	startBtn.click(function (event) {
 		event.preventDefault();
 		$(".subcontainer").remove();
@@ -118,23 +77,17 @@ $(document).ready(function () {
 
 		$('#questions-here').prepend(description);
 
-
-
-
 		//created questions on page
 		for (i = 0; i < quizItems.length; i++) {
 			$("#questions-here").append("<h4 id='question-text' class='row-fluid'>" + quizItems[i].question + "</h4>");
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + j + "'>" + quizItems[i].options[j]) + "</div>";
-
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-" + j + " ' name='question-" + i + "' value= " + j + "'>" + quizItems[i].options[j]) + "</div>";
 
 			} //end of j (opiton) for loop
 
 		} //end of i (question) for loop
-
-
 
 		var submitBtn = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-submit">Submit</button></div>');
 
@@ -147,8 +100,21 @@ $(document).ready(function () {
 			//obtain value of radio buttons
 
 			var distance = $('input:radio[name=question-0]:checked').val();
+			function distanceConverter() {
+
+				if (distance === 0) {
+					distance = 5;
+				} else if (distance === 1) {
+					distance = 10;
+				} else if (distance === 2) {
+					distance = 25;
+				}
+			}
+			distanceConverter(distance);
+			console.log(distance)
 			//converts distance in meters to miles
 			distance = 1609.34 * distance;
+			
 			var activity = $('input:radio[name=question-1]:checked').val();
 			var budget = $('input:radio[name=question-2]:checked').val();
 			var groupSize = $('input:radio[name=question-3]:checked').val();
@@ -157,24 +123,9 @@ $(document).ready(function () {
 			console.log(budget)
 			console.log(groupSize)
 
-			function money() {
-				if (activity <= 1 && budget <= 1 && groupSize <= 1 ) {
-					//nightOut-0/1-solo/couples
-				} else if (activity <= 1 && budget >= 2 && groupSize > 0 )
-				 {
-					//if the group is greater than  1person then suggest
-					//night club
-				} else if (activity <= 1 && budget >= 2 && groupSize < 1 ) 
-				{
 
-				} else if (activity === 2 && budget === 0 && groupSize === 0 ) 
-				{
 
-				} else if (activity === 0 && budget === 0 && groupSize === 0 )
-				 {
 
-				}
-			}
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
@@ -193,7 +144,7 @@ $(document).ready(function () {
 				{
 					location: orangeCounty,
 					radius: distance,
-					type: 'doctor',
+					type: 'hotel',
 				},
 				function (results, status, pagination) {
 					if (status !== 'OK') return;
