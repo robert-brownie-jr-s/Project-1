@@ -1,12 +1,10 @@
 
 $(document).ready(function () {
-
-
+// movie,park,club
+	var predeterminedChoices = [[0,0,0,0],[1,2,1,1],[2,1,2,1]]
 	var startBtn = $("#start");
 	var map, infoWindow, service;
-
-
-	$("#map").hide();
+	$("#map").hide()
 
 
 	var quizItems = [{
@@ -14,38 +12,103 @@ $(document).ready(function () {
 		options: ["5 miles", "10 miles", "25 miles"],
 	},
 	{
-		question: "Activity Level",
-		options: ["active", "not active "],
+		question: "What type of Activity?",
+		options: ["Night Out", "Outdoor Extravaganza", "Grab a Bite",],
 
 	},
 	{
-		question: "On a scale from 0 (cheapest) to 4 (most expensive) what is you budget? ",
-		options: ["0", "1", "2", "3", "4"],
+		question: "On a scale from 1 (cheapest) to 3 (most expensive) what is you budget? ",
+		options: ["0","1", "2", "3", "4"],
 	},
 	{
-		question: "How big is your group?",
-		options: ["1", "2", "3+"],
+		question: "How many people?",
+		options: ["Solo", "Couple", "Group", "A LOT"],
 	}] //end of quiz items 
+
+
+	//********************************************************//
+
+	/*
+		function initMap() {
+		  map = new google.maps.Map(document.getElementById("map"), {
+			center: {lat: 33.7175, lng: -117.8311},
+			zoom: 11
+		  });
+		  infoWindow = new google.maps.InfoWindow;
 	
+		  // Try HTML5 geolocation.
+		  if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+			  var pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			  };
+	
+			  infoWindow.setPosition(pos);
+			  infoWindow.setContent('Location found.');
+			  infoWindow.open(map);
+			  map.setCenter(pos);
+			}, function() {
+			  handleLocationError(true, infoWindow, map.getCenter());
+			});
+		  } else {
+			// Browser doesn't support Geolocation
+			handleLocationError(false, infoWindow, map.getCenter());
+		  }
+		}
+	
+		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		  infoWindow.setPosition(pos);
+		  infoWindow.setContent(browserHasGeolocation ?
+								'Error: The Geolocation service failed.' :
+								'Error: Your browser doesn\'t support geolocation.');
+		  infoWindow.open(map);
+		}
+	*/ //*******************************************//
+
+
 	//map initialization to OC
 	var orangeCounty = {
-		lat: 33.7175, 
+		lat: 33.7175,
 		lng: -117.8311
 	};
+
 	function initMap() {
-		// var orangeCounty = {
-		// 	lat: -33.866, 
-		// 	lng: 151.196
-		// };
-		
-		infowindow = new google.maps.InfoWindow();
 
-		map = new google.maps.Map(document.getElementById("map"), { 
+		map = new google.maps.Map(document.getElementById("map"), {
 			center: orangeCounty,
-			zoom: 10 
+			zoom: 10
 		});
+		infowindow = new google.maps.InfoWindow();
+		// Try HTML5 geolocation.
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				var pos = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
 
+				infoWindow.setPosition(pos);
+				infoWindow.setContent('Location found.');
+				infoWindow.open(map);
+				map.setCenter(pos);
+			}, function () {
+				handleLocationError(true, infoWindow, map.getCenter());
+			});
+		} else {
+			// Browser doesn't support Geolocation
+			handleLocationError(false, infoWindow, map.getCenter());
+		}
 	};
+
+	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		infoWindow.setPosition(pos);
+		infoWindow.setContent(browserHasGeolocation ?
+			'Error: The Geolocation service failed.' :
+			'Error: Your browser doesn\'t support geolocation.');
+		infoWindow.open(map);
+		initMap();
+	}
 
 	startBtn.click(function (event) {
 		event.preventDefault();
@@ -64,21 +127,18 @@ $(document).ready(function () {
 
 			//created options for each question
 			for (j = 0; j < quizItems[i].options.length; j++) {
-				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + quizItems[i].options[j] + "'>" + quizItems[i].options[j]) + "</div>";
+				$('#questions-here').append("<div class='option-div inline '> <input type='radio' class='option-here ' name='question-" + i + "' value= " + j + ">" + quizItems[i].options[j]) + "</div>";
 
 
 			} //end of j (opiton) for loop
 
 		} //end of i (question) for loop
 
-		var city = $('<div class="row-fluid city">' +
-			'<h4 class="card-title"> Zip Code(Must be in Orange County)</h4>' +
-			'<input id="user-input">' +
-			'</div>')
+
 
 		var submitBtn = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-submit">Submit</button></div>');
 
-		$("#questions-here").append(city, submitBtn);
+		$("#questions-here").append(submitBtn);
 
 
 		//submit function
@@ -86,20 +146,49 @@ $(document).ready(function () {
 
 			//obtain value of radio buttons
 
+
 			var distance = $('input:radio[name=question-0]:checked').val();
 			//converts distance in meters to miles
 			distance = 1609.34 * distance;
 			var activity = $('input:radio[name=question-1]:checked').val();
 			var budget = $('input:radio[name=question-2]:checked').val();
 			var groupSize = $('input:radio[name=question-3]:checked').val();
-			var location = $("#user-input").val();
+			// var location = $('input:radio[name=question-0]:checked').val();
+			console.log(activity)
+			console.log(budget)
+			console.log(groupSize)
+			console.log(distance)
+	
+			for (var i = 0; i < predeterminedChoices.length; i++) { 
+				if (predeterminedChoices[i][0] === distance &&
+					predeterminedChoices[i][1] === activity &&
+					predeterminedChoices[i][2] === budget &&
+					predeterminedChoices[i][3] === groupSize ){
+						// create div element 
+						// add string "movie" to element
+						// append* div under map
+						// **add tex to div element- append div to jquery
+					}
+			}
 
-			// var request = {
-			// 	radius: distance,
-			// 	minPriceLevel: budget,
-			// 	maxPriceLevel: budget
-			// };
-			// "&radius=" + distance + "&minPriceLevel=" + budget + "&maxPriceLevel=" + budget;
+			function money() {
+				if (activity <= 1 && budget <= 1 && groupSize <= 1 ) {
+					//nightOut-0/1-solo/couples
+				} else if (activity <= 1 && budget >= 2 && groupSize > 0 )
+				 {
+					//if the group is greater than  1person then suggest
+					//night club
+				} else if (activity <= 1 && budget >= 2 && groupSize < 1 ) 
+				{
+
+				} else if (activity === 2 && budget === 0 && groupSize === 0 ) 
+				{
+
+				} else if (activity === 0 && budget === 0 && groupSize === 0 )
+				 {
+
+				}
+			}
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
@@ -109,67 +198,53 @@ $(document).ready(function () {
 			$("#map").show();
 
 
-			
+
 			initMap();
 			var service = new google.maps.places.PlacesService(map);
 
-			
-
-			// Create the places service.
-			
-			// var getNextPage = null;
-			// var moreButton = document.getElementById('more');
-			// moreButton.onclick = function() {
-			//   moreButton.disabled = true;
-			//   if (getNextPage) getNextPage();
-			// };
-
-			  // Perform a nearby search.
-			  service.nearbySearch(
+			// Perform a nearby search.
+			service.nearbySearch(
 				{
-					location: orangeCounty, 
-					radius: distance, 
-					type: ['store']
+					location: orangeCounty,
+					radius: distance,
+					type: 'doctor',
 				},
-				function(results, status, pagination) {
-				  if (status !== 'OK') return;
-	
-				  createMarkers(results);
-				//   moreButton.disabled = !pagination.hasNextPage;
-				  getNextPage = pagination.hasNextPage && function() {
-					pagination.nextPage();
-				  };
+				function (results, status, pagination) {
+					if (status !== 'OK') return;
+
+					createMarkers(results);
+					getNextPage = pagination.hasNextPage && function () {
+						pagination.nextPage();
+					};
 				});
-		
 
 
-				function createMarkers(places) {
-					var bounds = new google.maps.LatLngBounds();
-					var placesList = document.getElementById('places');
-			
-					for (var i = 0, place; place = places[i]; i++) {
-					  var image = {
+
+			function createMarkers(places) {
+				var bounds = new google.maps.LatLngBounds();
+				var placesList = document.getElementById('places');
+
+				for (var i = 0, place; place = places[i]; i++) {
+					var image = {
 						url: place.icon,
 						size: new google.maps.Size(71, 71),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(17, 34),
 						scaledSize: new google.maps.Size(25, 25)
-					  };
-			
-					  var marker = new google.maps.Marker({
+					};
+
+					var marker = new google.maps.Marker({
 						map: map,
 						icon: image,
 						title: place.name,
 						position: place.geometry.location
-					  })
-					}
+					})
 				}
+			}
 
 		}) //end of submit function
 
 	}) //end of start function
-
-	//start of submit button function
 
 
 	// Initialize Firebase
