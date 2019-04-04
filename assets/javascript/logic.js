@@ -38,8 +38,23 @@ $(document).ready(function () {
 			center: orangeCounty,
 			zoom: 10
 		});
-
 	};
+/*
+	function toggleBounce() {
+		if (marker.getAnimation() !== null) {
+		  marker.setAnimation(null);
+		} else {
+		  marker.setAnimation(google.maps.Animation.BOUNCE);
+		}
+	  }
+
+
+
+	var request = {
+		placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+		fields: ['name', 'formatted_address', 'place_id', 'geometry']
+	};
+	*/
 
 	startBtn.click(function (event) {
 		event.preventDefault();
@@ -97,22 +112,9 @@ $(document).ready(function () {
 			console.log(budget)
 			console.log(groupSize)
 			console.log("distance: " + distance)
+
 			function whereToGO() {
-				/* 
-				for (var i = 0; i < predeterminedChoices.length; i++) {
-					if (predeterminedChoices[i][0] === distance &&
-						predeterminedChoices[i][1] === activity &&
-						predeterminedChoices[i][2] === budget &&
-						predeterminedChoices[i][3] === groupSize) {
 
-						// create div element 
-						// add string "movie" to element
-						// append* div under map
-						// **add tex to div element- append div to jquery
-					}
-				} */
-
-				
 				if (activity == 0 && budget == 0) {
 					adventure = "bowling_alley";
 				} else if (activity == 0 && budget >= 1) {
@@ -129,7 +131,7 @@ $(document).ready(function () {
 				}
 			}
 			whereToGO();
-console.log('adventure: ' + adventure)
+			console.log('adventure: ' + adventure)
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
@@ -162,7 +164,7 @@ console.log('adventure: ' + adventure)
 
 
 			function createMarkers(places) {
-
+// toggleBounce();
 				var bounds = new google.maps.LatLngBounds();
 				var placesList = document.getElementById('places');
 
@@ -183,7 +185,7 @@ console.log('adventure: ' + adventure)
 					})
 				}
 			}
-
+		
 		}) //end of submit function
 
 	}) //end of start function
