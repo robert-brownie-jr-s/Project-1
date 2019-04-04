@@ -11,9 +11,8 @@ $(document).ready(function () {
 		options: ["5 miles", "10 miles", "25 miles"],
 	},
 	{
-		//change to what type of activity
-		question: "Activity Level",
-		options: ["active", "not active "],
+		question: "What type of Activity?",
+		options: ["shopping Shopping", "restaurant", "bar", ""],
 
 	},
 	{
@@ -25,17 +24,56 @@ $(document).ready(function () {
 		options: ["1", "2", "3+"],
 	}] //end of quiz items 
 
+
+	//********************************************************//
+
+/*
+	function initMap() {
+	  map = new google.maps.Map(document.getElementById("map"), {
+		center: {lat: 33.7175, lng: -117.8311},
+		zoom: 11
+	  });
+	  infoWindow = new google.maps.InfoWindow;
+
+	  // Try HTML5 geolocation.
+	  if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+		  var pos = {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
+		  };
+
+		  infoWindow.setPosition(pos);
+		  infoWindow.setContent('Location found.');
+		  infoWindow.open(map);
+		  map.setCenter(pos);
+		}, function() {
+		  handleLocationError(true, infoWindow, map.getCenter());
+		});
+	  } else {
+		// Browser doesn't support Geolocation
+		handleLocationError(false, infoWindow, map.getCenter());
+	  }
+	}
+
+	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	  infoWindow.setPosition(pos);
+	  infoWindow.setContent(browserHasGeolocation ?
+							'Error: The Geolocation service failed.' :
+							'Error: Your browser doesn\'t support geolocation.');
+	  infoWindow.open(map);
+	}
+*/ //*******************************************//
+
+
 	//map initialization to OC
 	var orangeCounty = {
 		lat: 33.7175,
 		lng: -117.8311
 	};
+	
 	function initMap() {
-		// var orangeCounty = {
-		// 	lat: -33.866, 
-		// 	lng: 151.196
-		// };
-
+		
 		infowindow = new google.maps.InfoWindow();
 
 		map = new google.maps.Map(document.getElementById("map"), {
@@ -69,14 +107,11 @@ $(document).ready(function () {
 
 		} //end of i (question) for loop
 
-		var city = $('<div class="row-fluid city">' +
-			'<h4 class="card-title"> Zip Code(Must be in Orange County)</h4>' +
-			'<input id="user-input">' +
-			'</div>')
+		
 
 		var submitBtn = $('<div class="row-fluid submit-div"><button type="button" class="btn btn-submit">Submit</button></div>');
 
-		$("#questions-here").append(city, submitBtn);
+		$("#questions-here").append(submitBtn);
 
 
 		//submit function
@@ -91,6 +126,9 @@ $(document).ready(function () {
 			var budget = $('input:radio[name=question-2]:checked').val();
 			var groupSize = $('input:radio[name=question-3]:checked').val();
 			var location = $("#user-input").val();
+			function pricing() {
+		
+			}
 
 			// var request = {
 			// 	radius: distance,
@@ -157,8 +195,8 @@ $(document).ready(function () {
 					var marker = new google.maps.Marker({
 						map: map,
 						icon: image,
-						title: place.name,
-						position: place.geometry.location
+						title: place.name, 
+						position: place.geometry.location 
 					})
 				}
 			}
@@ -166,8 +204,6 @@ $(document).ready(function () {
 		}) //end of submit function
 
 	}) //end of start function
-
-	//start of submit button function
 
 
 	// Initialize Firebase
