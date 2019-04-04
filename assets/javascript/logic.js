@@ -1,9 +1,10 @@
 
 $(document).ready(function () {
-// movie,park,club
-	var predeterminedChoices = [[0,0,0,0],[1,2,1,1],[2,1,2,1]]
+	// movie,park,club
+	var predeterminedChoices = [[0, 0, 0, 0], [1, 2, 1, 1], [2, 1, 2, 1]]
 	var startBtn = $("#start");
 	var map, infoWindow, service;
+	var adventure;
 	$("#map").hide()
 
 
@@ -22,7 +23,7 @@ $(document).ready(function () {
 	},
 	{
 		question: "How many people?",
-		options: ["Solo", "Couple", "Group", "A LOT"],
+		options: ["Solo", "Couple", "Group"],
 	}] //end of quiz items 
 
 	//map initialization to OC 
@@ -37,38 +38,9 @@ $(document).ready(function () {
 			center: orangeCounty,
 			zoom: 10
 		});
-		/*
-		infowindow = new google.maps.InfoWindow();
-		// Try HTML5 geolocation.
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function (position) {
-				var pos = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude
-				};
 
-				infoWindow.setPosition(pos);
-				infoWindow.setContent('Location found.');
-				infoWindow.open(map);
-				map.setCenter(pos);
-			}, function () {
-				handleLocationError(true, infoWindow, map.getCenter());
-			});
-		} else {
-			// Browser doesn't support Geolocation
-			handleLocationError(false, infoWindow, map.getCenter());
-		} */
 	};
-	/*
-		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-			infoWindow.setPosition(pos);
-			infoWindow.setContent(browserHasGeolocation ?
-				'Error: The Geolocation service failed.' :
-				'Error: Your browser doesn\'t support geolocation.');
-			infoWindow.open(map);
-			initMap();
-		}
-	*/
+
 	startBtn.click(function (event) {
 		event.preventDefault();
 		$(".subcontainer").remove();
@@ -101,9 +73,8 @@ $(document).ready(function () {
 			//obtain value of radio buttons
 
 			var distance = $('input:radio[name=question-0]:checked').val();
-			function distanceConverter()
-			{
-				
+			function distanceConverter() {
+
 				if (distance == 0) {
 					distance = 5;
 				} else if (distance == 1) {
@@ -111,12 +82,12 @@ $(document).ready(function () {
 				} else if (distance == 2) {
 					distance = 25;
 				}
-			
-				
-			//converts distance in meters to miles
-			distance = 1609.34 * distance;
-		}
-		distanceConverter();
+
+
+				//converts distance in meters to miles
+				distance = 1609.34 * distance;
+			}
+			distanceConverter();
 
 			var activity = $('input:radio[name=question-1]:checked').val();
 			var budget = $('input:radio[name=question-2]:checked').val();
@@ -126,22 +97,39 @@ $(document).ready(function () {
 			console.log(budget)
 			console.log(groupSize)
 			console.log("distance: " + distance)
-	
-			for (var i = 0; i < predeterminedChoices.length; i++) { 
-				if (predeterminedChoices[i][0] === distance &&
-					predeterminedChoices[i][1] === activity &&
-					predeterminedChoices[i][2] === budget &&
-					predeterminedChoices[i][3] === groupSize ){
+			function whereToGO() {
+				/* 
+				for (var i = 0; i < predeterminedChoices.length; i++) {
+					if (predeterminedChoices[i][0] === distance &&
+						predeterminedChoices[i][1] === activity &&
+						predeterminedChoices[i][2] === budget &&
+						predeterminedChoices[i][3] === groupSize) {
+
 						// create div element 
 						// add string "movie" to element
 						// append* div under map
 						// **add tex to div element- append div to jquery
 					}
+				} */
+
+				
+				if (activity == 0 && budget == 0) {
+					adventure = "bowling_alley";
+				} else if (activity == 0 && budget >= 1) {
+					adventure = "restaurant";
+				}
+				else if (activity == 1 && budget == 0) {
+					adventure = "shopping_mall";
+				} else if (activity == 1 && budget >= 1) {
+					adventure = "amusement_park";
+				} else if (activity == 2 && budget == 0) {
+					adventure = "bar";
+				} else if (activity == 2 && budget >= 1) {
+					adventure = "spa";
+				}
 			}
-
-
-
-
+			whereToGO();
+console.log('adventure: ' + adventure)
 
 			//checking to see if submitBtn is working
 			console.log("you clicked submit")
@@ -160,7 +148,7 @@ $(document).ready(function () {
 				{
 					location: orangeCounty,
 					radius: distance,
-					type: 'hotel',
+					type: adventure,
 				},
 				function (results, status, pagination) {
 					if (status !== 'OK') return;
@@ -174,6 +162,7 @@ $(document).ready(function () {
 
 
 			function createMarkers(places) {
+
 				var bounds = new google.maps.LatLngBounds();
 				var placesList = document.getElementById('places');
 
